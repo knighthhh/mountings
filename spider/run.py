@@ -6,8 +6,9 @@ import multiprocessing
 import threading
 
 def main():
-    s = Scheduler()
     print('程序开始运行。。')
+    s = Scheduler()
+    s.run()
 
 
 

@@ -2,195 +2,128 @@ import datetime
 import json
 import threading
 from time import sleep
+from lxml.etree import HTML
 
-import config
 import re
 from download import Download
-from db import MongoClient
+from db import MysqlClient
 
 class Scheduler(object):
     def __init__(self):
         self.download = Download()
-        self.db = MongoClient()
-        self.user_url_list = []
-        self.threads = []
+        self.db = MysqlClient()
+        # self.user_url_list = []
+        # self.threads = []
 
-    def run(self,user_id = config.START_ID):
-        # self.user_start(user_id)
-        pass
+    def run(self):
+        # self.get_yiparts_parts()
+        # self.get_yiparts_detail()
+        self.get_car()
 
-    def user_start(self,user_id):
-        user_id = int(user_id)
-        results = self.db.find(user_id)
-        if (results and results['flag'] == False) or not results:
-            index_data = self.get_user_index(user_id)
-            if index_data:
-                self.get_user_info(user_id)
-                self.get_fans(user_id,index_data['user'])
-                self.get_followers(user_id,index_data['user'])
-            else:
-                data = {
-                    'user_id':user_id,
-                    'flag':'Error'
-                }
-                self.db.save(data)
-        else:
-            print(results['user']," 该用户已经爬取过")
-
-
-
-    def get_user_index(self,user_id):
-        user_index = 'https://m.weibo.cn/api/container/getIndex?containerid=100505{user_id}'
-        url = user_index.format(user_id=user_id)
+    def get_yiparts_parts(self):
+        url = 'http://www.yiparts.com/parts/'
         response = self.download.get_html(url)
-        if response:
-            try:
-                res_json = json.loads(response)
-                if 'userInfo' in res_json.keys():
-                    user = res_json['userInfo']['screen_name']
-                    user_id = res_json['userInfo']['id']
-                    user_url = res_json['userInfo']['profile_url']
-                    fans = res_json['userInfo']['followers_count']
-                    followers = res_json['userInfo']['follow_count']
-                    time = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-                    data = {
-                        'user':user,
-                        'user_id':user_id,
-                        'user_url':user_url,
-                        'fans':fans,
-                        'followers':followers,
-                        'time':time,
-                        'flag':True
-                    }
-                    print('正在抓取 ' + user +' ID为：' + str(user_id))
-                    self.db.save(data)
-                    return data
-            except:
-                print('json解析出错')
-                return None
+        doc = HTML(response)
+        names = doc.xpath('//div[@id="sort"]/div/ul/li/a/text()')
+        name_ens = doc.xpath('//div[@id="sort"]/div/ul/li/a/@href')
+        for name, name_en in zip(names,name_ens):
+            item_name = name.strip()
+            item_name_en = name_en[7:-1]
+            sql = 'insert into yiparts(yiparts_name,yiparts_name_en) VALUES ("{item_name}","{item_name_en}")'.format(item_name=item_name, item_name_en=item_name_en)
+            print(sql)
+            self.db.save(sql)
 
-    def get_user_info(self,user_id):
-        user_info = 'https://m.weibo.cn/api/container/getIndex?containerid=230283{user_id}_-_INFO'
-        url = user_info.format(user_id = user_id)
-        response = self.download.get_html(url)
-        if response:
-            # pattern = re.compile( r'{"card_type":41,"item_name":"\u6027\u522b","item_content":"(.*?)"}.*?{"card_type":41,"item_name":"\u6240\u5728\u5730","item_content":"(.*?)"}.*?{"card_type":41,"item_name":"\u7b80\u4ecb","item_content":"(.*?)"}.*?{"card_type":41,"item_name":"\u7b49\u7ea7".*?"item_content":"(.*?)".*?{"card_type":41,"item_name":"\u9633\u5149\u4fe1\u7528","item_content":"(.*?)".*?{"card_type":41,"item_name":"\u6ce8\u518c\u65f6\u95f4","item_content":"(.*?)"}',re.S)
-            # results = re.search(pattern,response)
-            # if results:
-            #     sex = results.group(1)
-            #     location = results.group(2)
-            #     jianjie = results.group(3)
-            #     level = results.group(4)
-            #     credit = results.group(5)
-            #     reg_time = results.group(6)
-            sex = ''
-            location = ''
-            jianjie = ''
-            level = ''
-            credit = ''
-            reg_time = ''
-
-            sex_pattern = re.compile(r'{"card_type":41,"item_name":"\\u6027\\u522b","item_content":"(.*?)"}',re.S)
-            location_pattern = re.compile(r'{"card_type":41,"item_name":"\\u6240\\u5728\\u5730","item_content":"(.*?)"}',re.S)
-            # jianjie_pattern = re.compile(r'{"card_type":41,"item_name":"\\u7b80\\u4ecb","item_content":"(.*?)"}',re.S)
-            level_pattern = re.compile(r'{"card_type":41,"item_name":"\\u7b49\\u7ea7".*?"item_content":"(.*?)"',re.S)
-            credit_pattern = re.compile(r'{"card_type":41,"item_name":"\\u9633\\u5149\\u4fe1\\u7528","item_content":"(.*?)"',re.S)
-            reg_time_pattern = re.compile(r'{"card_type":41,"item_name":"\\u6ce8\\u518c\\u65f6\\u95f4","item_content":"(.*?)"}',re.S)
-
-            sex_res = re.search(sex_pattern,response)
-            if sex_res:
-                sex = sex_res.group(1).encode('utf8').decode('unicode_escape')
-
-            location_res = re.search(location_pattern,response)
-            if location_res:
-                location = location_res.group(1).encode('utf8').decode('unicode_escape')
-
-            # jianjie_res = re.search(jianjie_pattern,response)
-            # if jianjie_res:
-            #     jianjie = jianjie_res.group(1).encode('utf8').decode('unicode_escape')
-
-            level_res = re.search(level_pattern,response)
-            if level_res:
-                level = level_res.group(1).encode('utf8').decode('unicode_escape')
-
-            credit_res = re.search(credit_pattern,response)
-            if credit_res:
-                credit = credit_res.group(1).encode('utf8').decode('unicode_escape')
-
-            reg_time_res = re.search(reg_time_pattern,response)
-            if reg_time_res:
-                reg_time = reg_time_res.group(1).encode('utf8').decode('unicode_escape')
-
-            data = {
-                'user_id':user_id,
-                'sex':sex,
-                'location':location,
-                # 'jianjie':jianjie,
-                'level':level,
-                'credit':credit,
-                'reg_time':reg_time
-            }
-            self.db.save(data)
-
-    def get_fans(self,user_id,user_name):
-        fans = 'https://m.weibo.cn/api/container/getIndex?containerid=231051_-_fans_-_{user_id}&since_id={since_id}'
-        for sid in range(1,251):
-            print(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
-            print('正在爬 ' + user_name + ' 第' + str(sid) +'页的粉丝')
-            sleep(0.5)
-            url = fans.format(user_id = user_id,since_id = sid)
+    def get_yiparts_detail(self):
+        sql = 'select * from yiparts'
+        results = self.db.find_all(sql)
+        for res in results:
+            url = 'http://www.yiparts.com/parts/{yiparts_name_en}/'.format(yiparts_name_en=res[2])
             print(url)
             response = self.download.get_html(url)
-            if response:
-                try:
-                    res_json = json.loads(response)
-                    if 'cards' in res_json.keys():
-                        if res_json['cards']:
-                            results = res_json['cards'][0]
-                            if 'card_group' in results.keys():
-                                for res in results['card_group']:
-                                    if 'user' in res.keys():
-                                        user = res['user']['screen_name']
-                                        fans_user_id = res['user']['id']
-                                        data = {
-                                            'user':user,
-                                            'user_id':fans_user_id,
-                                            'flag':False
-                                        }
-                                        self.db.save_first(data)
-                        else:
-                            print('爬了' + user_name + ' '+ str(sid) + ' 页粉丝')
-                            break
-                except:
-                    print('json解析出错')
+            doc = HTML(response)
+            names = doc.xpath('//div[@id="sort2"]/div/div/a/span[2]/text()')
+            name_ens = doc.xpath('//div[@id="sort2"]/div/div/a/@href')
+            imgs = doc.xpath('//div[@id="sort2"]/div/div/a/span[1]/img/@src')
+            for name, name_en, img in zip(names, name_ens, imgs):
+                item_name = name.strip()
+                item_name_en = name_en[11:-1]
+                item_img = img
+                sql = 'insert into yiparts_detail(pid, detail_name, detail_name_en, detail_img) VALUES ("{pid}", "{detail_name}", "{detail_name_en}", "{detail_img}")'.format(
+                    pid=res[0], detail_name=item_name, detail_name_en=item_name_en, detail_img=item_img)
+                print(sql)
+                self.db.save(sql)
 
-    def get_followers(self,user_id,user_name):
-        followers = 'https://m.weibo.cn/api/container/getIndex?containerid=231051_-_followers_-_{user_id}&page={page}'
-        for page in range(1,11):
-            print(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
-            print('正在爬 ' + user_name + ' 第'+ str(page) + '页的关注')
-            sleep(0.5)
-            url = followers.format(user_id = user_id,page = page)
-            response = self.download.get_html(url)
-            if response:
-                try:
-                    res_json = json.loads(response)
-                    if 'cards' in res_json.keys():
-                        if res_json['cards']:
-                            results = res_json['cards'][0]
-                            if 'card_group' in results.keys():
-                                for res in results['card_group']:
-                                    if 'user' in res.keys():
-                                        user = res['user']['screen_name']
-                                        follower_user_id = res['user']['id']
-                                        data = {
-                                            'user': user,
-                                            'user_id': follower_user_id,
-                                            'flag':False
-                                        }
-                                        self.db.save_first(data)
-                        else:
-                            print('爬了' + user_name + ' ' + str(page) + ' 页关注')
-                            break
-                except:
-                    print('json解析出错')
+    def get_car(self):
+        url = 'http://www.yiparts.com/Car/AjaxBrand/'
+        response = self.download.get_html(url)
+        jsonobj = json.loads(response)
+        for res in jsonobj:
+            # sql = 'insert into car(valid, pinyin, car_name) VALUES ("{valid}", "{pinyin}", "{car_name}")'.format(
+            #     valid=res['id'], pinyin=res['initial'], car_name=res['name'])
+            # print(sql)
+            # self.db.save(sql)
+
+            url_level1 = 'http://www.yiparts.com/Car/AjaxModel?level=1&bid={bid}'.format(bid=res['id'])
+            response =self.download.get_html(url_level1)
+            # print(url_level1)
+            doc = HTML(response)
+            m1ids = doc.xpath('//ul[@class="M1List"]/li/@m1id')
+            names1 = doc.xpath('//ul[@class="M1List"]/li/a/text()')
+            # for m1id, name in zip(m1ids, names1):
+            #     level1_sql = 'insert into car_level1(level1_bid, level1_m1id, level1_name) VALUES ("{level1_bid}", "{level1_m1id}", "{level1_name}")'.format(
+            #         level1_bid=res['id'], level1_m1id=m1id, level1_name=name)
+            #     print(level1_sql)
+            #     self.db.save(level1_sql)
+
+            for m1id in m1ids:
+                level2_url = 'http://www.yiparts.com/Car/AjaxModel?level=2&m1id={m1id}'.format(m1id=m1id)
+                response = self.download.get_html(level2_url)
+                doc = HTML(response)
+                m2ids = doc.xpath('//ul[@class="M2List MenuSwitch"]/li/@m2id')
+                names2 = doc.xpath('//ul[@class="M2List MenuSwitch"]/li/a/text()')
+                # for m2id, name in zip(m2ids, names2):
+                #     if m2id[:2] == 'm1':
+                #         continue
+                #     else:
+                #         level2_sql = 'insert into car_level2(level2_m1id, level2_m2id, level2_name) VALUES ("{level2_m1id}", "{level2_m2id}", "{level2_name}")'.format(level2_m1id=m1id, level2_m2id=m2id, level2_name=name)
+                #         print(level2_sql)
+                #         self.db.save(level2_sql)
+
+                for m2id in m2ids:
+                    if m2id[:2] == 'm1':
+                        continue
+                    level3_url = 'http://www.yiparts.com/Car/AjaxModel?level=3&m2id={m2id}'.format(m2id=m2id)
+                    response = self.download.get_html(level3_url)
+                    print(level3_url)
+                    doc = HTML(response)
+                    m3_info = doc.xpath('string(//table[@class="table2"]/tbody/tr/td[1]/a/@onclick)')
+                    print(m3_info)
+                    if len(m3_info)>0:
+                        m3_info = m3_info.split('\'')
+                        m3id = m3_info[1]
+                        ypc_m3id = m3_info[3]
+                    else:
+                        m3id =''
+                        ypc_m3id = ''
+                    chexing = doc.xpath('string(//table[@class="table2"]/tbody/tr/td[1])')
+                    nianfen = doc.xpath('string(//table[@class="table2"]/tbody/tr/td[2])')
+                    fadongji = doc.xpath('string(//table[@class="table2"]/tbody/tr/td[3])')
+                    gonglv = doc.xpath('string(//table[@class="table2"]/tbody/tr/td[4])')
+                    pailiang = doc.xpath('string(//table[@class="table2"]/tbody/tr/td[5])')
+                    biansuqi = doc.xpath('string(//table[@class="table2"]/tbody/tr/td[6])')
+                    ranliao = doc.xpath('string(//table[@class="table2"]/tbody/tr/td[7])')
+                    cheshen = doc.xpath('string(//table[@class="table2"]/tbody/tr/td[8])')
+                    qianzhidong = doc.xpath('string(//table[@class="table2"]/tbody/tr/td[9])')
+                    houzhidong = doc.xpath('string(//table[@class="table2"]/tbody/tr/td[10])')
+                    zhuchezhidong = doc.xpath('string(//table[@class="table2"]/tbody/tr/td[11])')
+                    qudongfangshi = doc.xpath('string(//table[@class="table2"]/tbody/tr/td[11])')
+
+                    level3_sql = 'insert into car_level3(level3_m2id, level3_m3id, ypc_m3id, chexing, nianfen, fadongji, gonglv, pailiang, biansuqi, ranliao, cheshen, qianzhidong, houzhidong, zhuchezhidong, qudongfangshi) ' \
+                                 'VALUES ("{level3_m2id}", "{level3_m3id}", "{ypc_m3id}","{chexing}","{nianfen}","{fadongji}","{gonglv}","{pailiang}","{biansuqi}","{ranliao}","{cheshen}","{qianzhidong}","{houzhidong}","{zhuchezhidong}","{qudongfangshi}")'\
+                        .format(level3_m2id=m2id, level3_m3id=m3id, ypc_m3id=ypc_m3id,chexing=chexing,nianfen=nianfen,fadongji=fadongji,gonglv=gonglv,pailiang=pailiang,biansuqi=biansuqi,ranliao=ranliao,cheshen=cheshen,qianzhidong=qianzhidong,houzhidong=houzhidong,zhuchezhidong=zhuchezhidong,qudongfangshi=qudongfangshi)
+                    print(level3_sql)
+                    self.db.save(level3_sql)
+
+
+
+

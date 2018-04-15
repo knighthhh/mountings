@@ -39,18 +39,25 @@ class Download(object):
 
     def get_html(self,url):
         #代理,cookies
-        if config.REQUEST_NUM % config.CHANGE_IP == 0:
-            config.IP = self.get_ip()
-            config.COOKIES = choice(cookies.cookies)
-        proxies = {
-            'http':'http://' + config.IP
-        }
-        config.REQUEST_NUM +=1
+        if config.PROXY_SWITCH:
+            if config.REQUEST_NUM % config.CHANGE_IP == 0:
+                config.IP = self.get_ip()
+                config.COOKIES = choice(cookies.cookies)
+            proxies = {
+                'http':'http://' + config.IP
+            }
+            config.REQUEST_NUM +=1
+        else:
+            pass
         try:
             if config.COOKIES_SWITCH:
                 response = requests.get(url, headers=config.HEADERS, cookies=config.COOKIES,proxies=proxies)
             else:
-                response = requests.get(url, headers=config.HEADERS, proxies=proxies)
+                if config.PROXY_SWITCH:
+                    response = requests.get(url, headers=config.HEADERS, proxies=proxies)
+                else:
+                    response = requests.get(url, headers=config.HEADERS)
+                    response.encoding = "utf-8"
             if response.status_code == 200:
                 return response.text
             return None
