@@ -1,7 +1,7 @@
 from time import sleep
 
-from scheduler import Scheduler
-from db import MongoClient
+from spider.scheduler import Scheduler
+from spider.db import MongoClient
 import multiprocessing
 import threading
 

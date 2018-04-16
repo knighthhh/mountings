@@ -3,10 +3,12 @@ import json
 import threading
 from time import sleep
 from lxml.etree import HTML
+from lxml import etree
 
 import re
-from download import Download
-from db import MysqlClient
+from spider.download import Download
+from spider.db import MysqlClient
+from spider.config import *
 
 class Scheduler(object):
     def __init__(self):
@@ -18,7 +20,9 @@ class Scheduler(object):
     def run(self):
         # self.get_yiparts_parts()
         # self.get_yiparts_detail()
-        self.get_car()
+        # self.get_car()
+        # self.get_partid()
+        self.get_items()
 
     def get_yiparts_parts(self):
         url = 'http://www.yiparts.com/parts/'
@@ -125,5 +129,54 @@ class Scheduler(object):
                     self.db.save(level3_sql)
 
 
+    def get_partid(self):
+        url = 'http://www.yiparts.com/Vin/GetPartByM3Id?M3Id=60290&oem=&ypc_m3id=9543'
+        response = self.download.get_html(url)
+        doc = HTML(response)
+        partids = doc.xpath('//div[@class="PartTree"]/ul/li/@part')
+        part_names = doc.xpath('//div[@class="PartTree"]/ul/li//text()')
+        for partid, part_name in zip(partids,part_names):
+            sql = 'insert into partid(partid,part_name) values("{partid}","{part_name}")'.format(partid=partid, part_name=part_name)
+            print(sql)
+            self.db.save(sql)
 
+    def get_items(self):
+        #找出所有要查询的具体车型，m3id
+        find_sql = 'select * from car_level3'
+        results = self.db.find_all(find_sql)
+        for res in results:
+            m3id = res[2]
+            ypc_m3id = res[3]
+            if m3id!='' and ypc_m3id!='' and m3id!='0':
+                #遍历该车型的所有零件
+                part_url = 'http://www.yiparts.com/Vin/GetPartByM3Id?M3Id={m3id}&oem=&ypc_m3id={ypc_m3id}'.format(m3id=m3id, ypc_m3id=ypc_m3id)
+                part_response = self.download.get_html(part_url)
+                part_doc = HTML(part_response)
+                if part_doc:
+                    item_urls = part_doc.xpath('//div[@class="PartTree"]/ul/li/a/@href | //div[@class="PartTree cye-lm-tag"]/ul/li/a/@href')
+                    for item_url in item_urls:
+                        item_response = self.download.get_html(HOST_URL + item_url)
+                        #不做翻页处理
 
+                        item_partid = item_url.split('=')[-1]
+
+                        item_doc = HTML(item_response)
+                        if item_doc:
+                            trs = item_doc.xpath('//div[@id="yipartsdata"]//tr[@class="content"]')
+                            for tr in trs:
+                                item_detail = etree.tostring(tr)
+                                item_detail_doc = HTML(item_detail)
+
+                                item_img = item_detail_doc.xpath('string(//td[1]/a/img/@src)')
+                                item_OE = item_detail_doc.xpath('string(//td[2]/a//li[3] | //td[2]//a/li)')
+                                item_arg1 = item_detail_doc.xpath('string(//td[3]//li[1])')
+                                item_arg2 = item_detail_doc.xpath('string(//td[3]//li[2])')
+                                item_arg3 = item_detail_doc.xpath('string(//td[3]//li[3])')
+                                item_arg4 = item_detail_doc.xpath('string(//td[3]//li[4])')
+                                item_arg5 = item_detail_doc.xpath('string(//td[3]//li[5])')
+
+                                item_sql = 'insert into yiparts_items(item_m3id,item_partid,item_img,item_OE,item_arg1,item_arg2,item_arg3,item_arg4,item_arg5) ' \
+                                           'values("{item_m3id}","{item_partid}","{item_img}","{item_OE}","{item_arg1}","{item_arg2}","{item_arg3}","{item_arg4}","{item_arg5}")'\
+                                    .format(item_m3id=m3id,item_partid=item_partid,item_img=item_img,item_OE=item_OE,item_arg1=item_arg1,item_arg2=item_arg2,item_arg3=item_arg3,item_arg4=item_arg4,item_arg5=item_arg5)
+                                print(item_sql)
+                                self.db.save(item_sql)

@@ -1,5 +1,5 @@
-from config import *
-import pymongo
+from spider.config import *
+# import pymongo
 import pymysql
 
 class MongoClient(object):

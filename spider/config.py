@@ -14,6 +14,8 @@ MYSQL_USER = 'root'
 MYSQL_PASSWD = 'root'
 MYSQL_CHARSET = 'utf8'
 
+HOST_URL = 'http://www.yiparts.com'
+
 #当前请求次数
 REQUEST_NUM = 0
 

@@ -1,8 +1,8 @@
 import requests
 import json
-import config
-import cookies
-from config import *
+import spider.config
+import spider.cookies
+from spider.config import *
 from time import sleep
 from requests import RequestException
 from random import choice
@@ -39,24 +39,24 @@ class Download(object):
 
     def get_html(self,url):
         #代理,cookies
-        if config.PROXY_SWITCH:
-            if config.REQUEST_NUM % config.CHANGE_IP == 0:
-                config.IP = self.get_ip()
-                config.COOKIES = choice(cookies.cookies)
+        if spider.config.PROXY_SWITCH:
+            if spider.config.REQUEST_NUM % spider.config.CHANGE_IP == 0:
+                spider.config.IP = self.get_ip()
+                spider.config.COOKIES = choice(spider.cookies.cookies)
             proxies = {
-                'http':'http://' + config.IP
+                'http':'http://' + spider.config.IP
             }
-            config.REQUEST_NUM +=1
+            spider.config.REQUEST_NUM +=1
         else:
             pass
         try:
-            if config.COOKIES_SWITCH:
-                response = requests.get(url, headers=config.HEADERS, cookies=config.COOKIES,proxies=proxies)
+            if spider.config.COOKIES_SWITCH:
+                response = requests.get(url, headers=spider.config.HEADERS, cookies=spider.config.COOKIES, proxies=proxies)
             else:
-                if config.PROXY_SWITCH:
-                    response = requests.get(url, headers=config.HEADERS, proxies=proxies)
+                if spider.config.PROXY_SWITCH:
+                    response = requests.get(url, headers=spider.config.HEADERS, proxies=proxies)
                 else:
-                    response = requests.get(url, headers=config.HEADERS)
+                    response = requests.get(url, headers=spider.config.HEADERS)
                     response.encoding = "utf-8"
             if response.status_code == 200:
                 return response.text
