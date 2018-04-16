@@ -1,0 +1,154 @@
+@charset "utf-8";
+#knowledgebody{
+	margin-top: 50px;
+}
+
+.home-bg{
+	height: 300px;
+	position: relative;
+}
+.home-bg .picture{
+	position: absolute;
+	height: 100%;
+	width:100%;
+	top: 0px;
+}
+.home-bg .picture img{
+	height: 100%;
+	width: 100%;
+}
+
+.home-text{
+	position: relative;
+	text-align: center;
+	margin-right: 5%;
+	margin-left: 5%;
+	padding-top:150px;
+}
+.home-box{
+	width: 100%;
+	margin: 0;
+	font-family:  Arial Rounded MT Bold;
+	color: white;
+}
+
+.home-box1-h,.download-h{
+	font-weight: bold;
+	font-size: 14px;
+}
+
+.home-box1-p,.home-box2-p,.download-p{
+	font-size: 8px;
+}
+
+.tab1{
+	padding-top: 80px;
+	padding-bottom: 80px;
+}
+
+.tab1 h2{
+	color: #77B329;
+}
+.tab1 li{
+	/*color: #D9534F;*/
+}
+.tab1  li span{
+	
+	font-size: 14px;
+}
+
+ul.nav-tabs{
+    width: 190px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.067);
+}
+ul.nav-tabs li{
+    margin: 0 0 0 0;
+    border-top: 1px solid #ddd;
+}
+ul.nav-tabs li:first-child{
+    border-top: none;
+}
+ul.nav-tabs li a{
+    margin: 0;
+    padding: 8px 16px;
+    border-radius: 0;
+    font-size: 17px;
+}
+
+ul.nav-tabs li:first-child a{
+    border-radius: 4px 4px 0 0;
+}
+ul.nav-tabs li:last-child a{
+    border-radius: 0 0 4px 4px;
+}
+/*ul.nav-tabs.affix{
+    top: 30px;
+}*/
+#myTab a:hover{
+	
+	background: #449d9d;
+	color:white
+}
+
+.set a{
+	font-size: 18px;
+	color: #4299D8;
+}
+
+.set .form-group{
+	margin-bottom: -10px;
+}
+
+/*翻页*/
+/*.pagelist span.current{background: #22CC77}
+.pagelist {padding:10px 0; text-align:center;}
+.pagelist span,.pagelist a{ border-radius:3px; border:1px solid #dfdfdf;display:inline-block; padding:5px 12px;}
+.pagelist a{ margin:0 3px;}
+.pagelist span.current{ background:#09F; color:#FFF; border-color:#09F; margin:0 2px;}
+.pagelist a:hover{background:#09F; color:#FFF; border-color:#09F; }
+.pagelist label{ padding-left:15px; color:#999;}
+.pagelist label b{color:red; font-weight:normal; margin:0 3px;}*/
+
+
+/* 小屏幕（平板，大于等于768px） */
+@media (min-width: 768px) {
+	.home-bg{
+		height: 400px;
+	}
+	.home-text{
+		padding-top:35px;
+	}
+	.home-box1-h{
+		font-size: 25px;
+	}
+}
+
+/* 中等屏幕（桌面显示器，大于等于992px） */
+@media (min-width: 992px) {
+	.home-bg{
+		height: 500px;
+	}
+	.home-text{
+		padding-top:60px;
+	}
+	.home-box1-h{
+		font-size: 30px;
+	}
+}
+
+/* 大屏幕（大桌面显示器，大于等于1200px） */
+@media (min-width: 1200px) {
+	.home-bg{
+		height: 700px;
+	}
+	.home-text{
+		padding-top:500px;
+	}
+	.home-box1-h{
+		font-size: 50px;
+	}
+}

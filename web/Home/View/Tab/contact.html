@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+	
+	<include file="Public:header"/>
+	
+	<link rel="stylesheet" type="text/css" href="{$Think.const.HOME_CSS_URL}/animate.css"/>
+	<link rel="stylesheet" href="{$Think.const.HOME_CSS_URL}/contact.css">
+		
+	<div id="contact">
+		<div class="">
+			<div class="contact-bg" >
+				<div class="picture">
+					<img src="{$Think.const.HOME_IMAGES_URL}/contact.png"/>
+				</div>
+				<div class="contact-text">
+					<div class="row contact-box">
+						<div class=" col-lg-4  col-md-4  col-sm-4  col-xs-4 " >
+							<div class="contact-detail">
+								<img src="{$Think.const.HOME_IMAGES_URL}/usered.png"/>
+								<p>{$contact['tab1_p1']}</p>
+							</div>
+						</div>
+						<div class=" col-lg-4  col-md-4  col-sm-4  col-xs-4 " >
+							<div class="contact-detail">
+								<img src="{$Think.const.HOME_IMAGES_URL}/jxs.png"/>
+								<p>{$contact['tab1_p2']}</p>
+							</div>
+						</div>
+						<div class="col-lg-4  col-md-4  col-sm-4  col-xs-4 " >
+							<div class="contact-detail">
+								<img src="{$Think.const.HOME_IMAGES_URL}/partner.png"/>
+								<p>{$contact['tab1_p3']}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
+		<div class="container">
+			<div class="" style="padding-top: 50px;text-align: center;padding-left: 25%;padding-right: 25%;font-family:  Arial Rounded MT Bold;">
+			  <form class="form-horizontal" >
+				  
+				  <div class="form-group">
+				    <label for="lastname" class="col-sm-2 control-label">{$contact['name']}</label>
+				    <div class="col-sm-10">
+				      <input type="text" class="form-control" id="" name="name" placeholder="">
+				    </div>
+				  </div>
+				  <div class="form-group">
+				    <label for="lastname" class="col-sm-2 control-label">{$contact['email']}</label>
+				    <div class="col-sm-10">
+				      <input type="text" class="form-control" id="" name="email" placeholder="">
+				    </div>
+				  </div>
+				  <div class="form-group">
+				    <label for="lastname" class="col-sm-2 control-label">{$contact['content']}</label>
+				    <div class="col-sm-10">
+    					<textarea class="form-control" rows="3" name="text"></textarea>
+				    </div>
+				  </div>
+				 
+				  <div class="form-group ">
+				    <div class="col-sm-offset-2 col-sm-10">
+				      <button type="" class="submit btn btn-default pull-right">{$contact['submit']}</button>
+				    </div>
+				  </div>
+				</form>
+
+			</div>
+		</div>
+		
+		<!--地址-->
+		<div class="address" >
+			<p class="wow bounceInDown" data-wow-duration="1s">{$contact['find']}</p> 
+		</div>
+		
+		<div id="case">
+			<div class="container">
+				<div class="row">
+					<div class="wow bounceInDown col-lg-6 col-md-6 col-sm-6 col-xs-12" data-wow-duration="2s">
+						<div class="thumbnail">
+							<img src="{$Think.const.HOME_IMAGES_URL}/shumagang.JPG" alt=""/>
+							<div class="caption">
+								<h4>{$contact['tab2_box1_h']}</h4>
+								<p>{$contact['tab2_box1_p']}</p>
+							</div>
+						</div>
+					</div>
+					<div class="wow bounceInRight col-lg-6 col-md-6 col-sm-6 col-xs-12" data-wow-duration="0.5s"  data-wow-delay="0.2s">
+						<div class="thumbnail">
+							<img src="{$Think.const.HOME_IMAGES_URL}/shenzhen.jpg" alt="" />
+							<div class="caption">
+								<h4>{$contact['tab2_box2_h']}</h4>
+								<p>{$contact['tab2_box2_p']}</p>
+							</div>
+						</div>
+					</div>
+					<div class="wow rollIn col-lg-6 col-md-6 col-sm-6 col-xs-12" data-wow-delay="0.3s">
+						<div class="thumbnail">
+							<img src="{$Think.const.HOME_IMAGES_URL}/jianqiao.jpg" alt="" />
+							<div class="caption">
+								<h4>{$contact['tab2_box3_h']}</h4>
+								<p>{$contact['tab2_box3_p']}</p>
+							</div>
+						</div>
+					</div>
+					<div class="wow swing col-lg-6 col-md-6 col-sm-6 col-xs-12" data-wow-duration="1s">
+						<div class="thumbnail">
+							<img src="{$Think.const.HOME_IMAGES_URL}/deguo.jpg" alt="" />
+							<div class="caption">
+								<h4>{$contact['tab2_box4_h']}</h4>
+								<p>{$contact['tab2_box4_p']}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+		
+		
+	<include file="Public:footer"/>
+	
+	<script type="text/javascript">
+		$('.Contact').addClass('active')
+		$('.submit').on('click',function(){
+			var name = $("input[name='name'] ").val();
+			var email = $("input[name='email'] ").val();
+			var text = $("textarea[name='text'] ").val();
+		
+			url = "__MODULE__/Contact/save_info";
+			$.ajax({  
+                type:'post',  
+                url:url,
+                data:{
+                	name:name,
+                	email:email,
+                	text:text
+                },
+                success:function(res){  
+                	 alert("Success");
+                }  
+            })  
+		
+//			url = "{$Think.const.SITE_URL}/__CONTROLLER__/Knowdetail/email/";
+			
+		})
+	</script>		
+		
+	<script src="{$Think.const.HOME_JS_URL}/wow.min.js"></script>
+	<script type="text/javascript">
+		new WOW().init();
+	</script>
+		
+</body>
+</html>

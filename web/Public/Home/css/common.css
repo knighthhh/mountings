@@ -1,0 +1,165 @@
+@charset "utf-8";
+/*主题颜色449d9d  字体 Arial Rounded MT Bold*/
+body {
+	font-family:Arial Rounded MT Bold, 幼圆,"Helvetica Neue", Helvetica, Arial, "Microsoft Yahei UI", "Microsoft YaHei", SimHei, "\5B8B\4F53", simsun, sans-serif;
+	color: #666;
+}
+
+
+
+.logo {
+	padding:0;
+}
+
+/*导航条*/
+.navbar-fixed-top{
+	background-color: white;
+}
+
+#navbar-font li a{
+	color:black; 
+	font-size:15px ;
+	font-family:Arial Rounded MT Bold;
+	/*font-family: 幼圆;*/
+	
+}
+.font-cn li a{
+	font-family: 幼圆;
+}
+
+#navbar-font li a:hover{
+	color:#244141;
+}
+
+#navbar-collapse ul {
+	margin-top:0;
+}
+
+
+/*底部*/
+#footer {
+	background-color: white;
+	border-top: 1px solid #ccc;
+	padding: 20px;
+	text-align: center;
+	color: #eee;
+}
+
+.widget {
+    position:relative;
+    color: #8C8C8C;
+}
+
+.widgetheading {
+	
+    color: #666;
+	width:100%;
+	padding:0;
+	font-weight: bold;
+}
+
+.link-list{
+	margin:0;
+	padding:0;
+	list-style:none;
+}
+
+.link-list li{
+	margin:0 auto;
+	padding:2px 0 2px 0;
+	list-style:none;
+}
+
+.link-list li a{
+	color: #8C8C8C;
+}
+.link-list li a:hover {
+	color: #46bd55;
+}
+
+.thumbnail{
+	background-color: white;
+	margin-bottom: 5px;
+}
+
+#footthumb{
+	border: none;
+}
+
+.myfootdiv{
+	padding-left:10% ;
+}
+
+.mypartner,.mypardiv1{
+	padding-right: 0;
+	padding-left: 0;
+}
+
+.mypardiv2{
+	border: none;
+}
+
+.cyberport{
+	margin-top: 5%;
+}
+
+.arm{
+	margin-top: -5%;
+}
+
+.merck{
+	margin-top: 15%;
+}
+
+.johnson{
+	margin-top: 20%;
+}
+
+.hax{
+	width: 65%;
+	
+}
+
+.sosv{
+	width: 65%;
+}
+
+
+#sub-footer-cr{
+	color:#8C8C8C;
+	border-top: 1px solid #ccc;
+	padding-top:15px ;
+	margin-top:15px ;
+}
+
+.mytext-align{
+	text-align: justify;
+	text-align-last: left;
+	
+}
+
+/* 小屏幕（平板，大于等于768px） */
+@media (min-width: 768px) {
+	#navbar-font li a{
+		font-size: 10px;
+	}
+	
+}
+
+/* 中等屏幕（桌面显示器，大于等于992px） */
+@media (min-width: 992px) {
+	#navbar-font li a{
+		font-size: 15px;
+	}
+	
+}
+
+/* 大屏幕（大桌面显示器，大于等于1200px） */
+@media (min-width: 1200px) {
+	#navbar-font li a{
+		font-size: 15px;
+	}
+	#font-cn li a{
+		font-family: 幼圆;
+	}
+}

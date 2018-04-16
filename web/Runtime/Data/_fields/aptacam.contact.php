@@ -1,0 +1,1 @@
+a:6:{i:0;s:10:"contact_id";i:1;s:8:"con_name";i:2;s:9:"con_email";i:3;s:8:"con_text";s:3:"_pk";s:10:"contact_id";s:5:"_type";a:4:{s:10:"contact_id";s:7:"int(11)";s:8:"con_name";s:12:"varchar(255)";s:9:"con_email";s:12:"varchar(255)";s:8:"con_text";s:8:"longtext";}}

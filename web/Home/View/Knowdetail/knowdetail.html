@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+	<include file="Public:header"/>
+	
+	<link rel="stylesheet" href="{$Think.const.HOME_CSS_URL}/knowledge.css">
+	
+		<div id="knowledgebody">
+			<div class="tab1">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-2">
+							<!--<ul class="nav nav-tabs nav-stacked">
+												
+								<li>
+									<a href=""></a>
+								</li>
+								<li>
+									<a href=""></a>
+								</li>
+							</ul>-->
+						</div>
+						<div class="col-md-12">
+								<div id="newdetial">
+									<div id="detial"  class="">
+										<hr />
+										<div id="newtitle">
+											<h3 class="text-center">
+														<?php echo $data['title']; ?>					
+											</h3>
+											<div class="text-center">
+												 <span style=""><?php echo $data['authers']; ?></span><br/>
+												  <span class=""><?php echo $data['periodical']; ?><?php echo $data['copyright']; ?></span>
+											      
+											</div>
+												 
+											
+										</div>
+										<hr />
+										<span style="color:#449d9d;font-size: 20px;">Author information</span>
+										<hr />
+										<div>
+											<?php echo $data['authers_info']; ?>
+										</div>
+										
+										<hr />
+										<span style="color:#449d9d;font-size: 20px;">Abstract</span>
+										<hr />
+										<div>
+											<?php echo $data['abstract']; ?>
+										</div>
+									</div>
+								</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+		
+	 	
+	<include file="Public:footer"/>
+	
+	<script type="text/javascript">
+		$('.Knowledge').addClass('active');
+		
+	</script>	
+</body>
+</html>

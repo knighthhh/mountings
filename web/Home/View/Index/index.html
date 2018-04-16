@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	
+	<include file="Public:header"/>
+	
+	<link rel="stylesheet" type="text/css" href="{$Think.const.HOME_CSS_URL}/home.css">
+	<div id="home">
+		<div class="">
+			<div class="home-bg" >
+				<div class="picture">
+					<img src="{$Think.const.HOME_IMAGES_URL}/homeimg.png"/>
+				</div>
+				<div class="home-text">
+					<div class="row home-box">
+						<div class="col-lg-7  col-md-7  col-sm-7 col-xs-7 ">
+							<div class="">
+								<p class="home-box-p1">{$home['slogan1']}</p>
+								<p class="home-box-p2">{$home['slogan2']}</p>
+								<p class="home-box-p3">{$home['slogan3']}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="tab1">
+			<div class="" >
+				<div class="">
+					<h2 class="tab1-h2 " >{$home['tab1_h']}</h2>
+					<p class="tab1-p1 mytext-align tab1-mytext " >{$home['tab1_p1']}{$home['tab1_p2']}</p>
+					<!--<p class="tab1-p2">{$home['tab1_p2']}</p>-->
+				</div>
+				
+				<div>
+					<img src="{$Think.const.HOME_IMAGES_URL}/product.png" class="img-responsive center-block"/>
+				</div>
+			</div>
+		</div>
+		
+		<div class="tab2" >
+			<div class="">
+				<div class="picture">
+					<img src="{$Think.const.HOME_IMAGES_URL}/xibao.png"/>
+				</div>
+				<div class="tab2-text">
+					<div class="">
+						<div class="">
+							<p class="tab2-text-h">{$home['tab2_h']}</p> 
+							<p class="tab2-text-h-p"><a href="__MODULE__/Tab/solutions">{$home['tab2_more']}</a></p>
+						</div>
+						<div class="row tab2-box">
+							<div class="col-lg-4  col-md-4  col-sm-4 col-xs-12 "> 
+								<p class="tab2-box-title">{$home['tab2_box1_h']}</p> 
+								<p class="tab2-box-title-p">{$home['tab2_box1_p']}</p> 
+							</div>
+							<div class="col-lg-4  col-md-4  col-sm-4 col-xs-12 "> 
+								<p class="tab2-box-title">{$home['tab2_box2_h']}</p> 
+								<p class="tab2-box-title-p">{$home['tab2_box2_p']}</p> 
+							</div>
+							<div class="col-lg-4  col-md-4  col-sm-4 col-xs-12 "> 
+								<p class="tab2-box-title">{$home['tab2_box3_h']}</p> 
+								<p class="tab2-box-title-p">{$home['tab2_box3_p']}</p> 
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<include file="Public:footer"/>
+	
+	<script type="text/javascript">
+		$('.Home').addClass('active')
+	</script>
+	
+		
+</body>
+</html>
