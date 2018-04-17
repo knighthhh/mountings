@@ -26,7 +26,7 @@
 				<div class="row">
 					<div class="col-xs-3 col-sm-6">
 						<div class="btn-group btn-group-lg">
-							<button id="car" type="button" class="btn btn-default" data-toggle="modal" data-target="#Modal">品牌</button>
+							<button id="car" valid="" type="button" class="btn btn-default" data-toggle="modal" data-target="#Modal">品牌</button>
 							<button id="car_level1" type="button" class="btn btn-default" data-toggle="modal" data-target="#Modal1">车系</button>
 							<button id="car_level2" type="button" class="btn btn-default" data-toggle="modal" data-target="#Modal2">车型</button>
 							<button id="car_level3" type="button" class="btn btn-default" data-toggle="modal" data-target="#Modal3">车型明细</button>
@@ -75,7 +75,7 @@
 			    success:function(data) {
 			       	var s="";
 					for(var i=0;i<data.length;++i){
-						s += '<button vaule="'+data[i].valid+'" type="button" class="btn btn-warning ">'+data[i].car_name+'</button>';
+						s += '<button valid="'+data[i].valid+'" type="button" class="btn btn-warning ">'+data[i].car_name+'</button>&nbsp;';
 					}
 					$('.modal-body').html(s);
 			     },
@@ -83,11 +83,17 @@
 			            alert(XMLHttpRequest.status + status + errorThrown);
 			     }
 			});
-
-
-//			html='hahaha';
-//			$('.modal-body').html(html);
 		})
+
+
+		$('#Modal .modal-body').on('click','button',function(){
+
+				valid = $(this).attr('valid');
+				name = $(this).html();
+				$('#car').attr("valid",valid);
+				$('#car').html(name);
+				$('#Modal').modal('hide');
+			})
 	</script>
 
 </html>
