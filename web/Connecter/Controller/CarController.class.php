@@ -20,10 +20,10 @@ class CarController extends Controller {
 
 	public function get_car(){
 	    $model = M('car');
-        $res = $model -> find();
+        $res = $model -> select();
 
-    	print_r($res);
 
-    	//echo json_encode($data);
+
+    	echo json_encode($data);
 	}
 }
