@@ -125,7 +125,7 @@
 			    url:'http://www.hhhgo.cn/mountings/web/index.php/Connecter/Car/get_car',
 			    data:{
 			    },
-			    type:'GET',
+			    type:'POST',
 			    dataType:'json',
 			    success:function(data) {
 			       	var s="";
@@ -166,7 +166,7 @@
 			    data:{
 			    		level2_m1id:$('#car_level1').attr("levelone"),
 			    },
-			    type:'GET',
+			    type:'POST',
 			    dataType:'json',
 			    success:function(data) {
 			       	var s="";
@@ -187,7 +187,7 @@
 			    data:{
 			    		level3_m2id:$('#car_level2').attr("leveltwo"),
 			    },
-			    type:'GET',
+			    type:'POST',
 			    dataType:'json',
 			    success:function(data) {
 			       	var s="";
@@ -207,7 +207,7 @@
 			    data:{
 //			    		partid:$('#part').attr("partid")
 			    },
-			    type:'GET',
+			    type:'POST',
 			    dataType:'json',
 			    success:function(data) {
 			       	var s="";
