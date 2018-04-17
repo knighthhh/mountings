@@ -35,7 +35,7 @@
 					</div>
 					<div class="col-xs-3 col-sm-6">
 						<div class="btn-group btn-group-lg">
-							<button type="button" class="btn btn-info">查询</button>
+							<button id="query" type="button" class="btn btn-info">查询</button>
 						</div>
 					</div>
 				</div>
@@ -116,7 +116,10 @@
 					</div>
 				</div>
 			</div>
-
+			
+			<div class="yiparts_items">
+				
+			</div>
 		</div>
 	</body>
 	<script type="text/javascript">
@@ -262,6 +265,33 @@
 			$('#part').html(name);
 			$('#Modalpart').modal('hide');
 		})
+		
+//查询
+		$('#query').on('click',function(){
+			item_m3id = $('#car_level3').attr("levelthree");
+			item_partid = $('#part').attr("partid");
+			$.ajax( {
+			    url:'http://www.hhhgo.cn/mountings/web/index.php/Connecter/Car/get_item',
+			    data:{
+			    		item_m3id:item_m3id,
+			    		item_partid:item_partid
+			    },
+			    type:'POST',
+			    dataType:'json',
+			    success:function(data) {
+			       	var s="";
+					for(var i=0;i<data.length;++i){
+						
+						s += '<img src="'+data[i].item_img+'"/>';
+						s +='<div>'+data[i].item_OE+'</div>'
+					$('.yiparts_items').html(s);
+			     },
+			     error : function(XMLHttpRequest, textStatus, errorThrown) {
+			     }
+			});
+		})
+		
+		
 	</script>
 
 </html>

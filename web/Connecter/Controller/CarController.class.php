@@ -54,4 +54,12 @@ class CarController extends Controller {
         $res = $model-> select();
     	echo json_encode($res);
 	}
+
+	public function get_item(){
+	    $model = M('yiparts_items');
+        $data['item_m3id'] = I('post.item_m3id');
+        $data['item_partid'] = I('post.item_partid');
+        $res = $model->where($data) -> select();
+    	echo json_encode($res);
+	}
 }
