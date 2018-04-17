@@ -17,14 +17,14 @@
 	</head>
 
 	<body>
-		<div>
-			<div>
-				<h1>qi pei xi tong</h1>
+		<div class="container">
+			<div style="text-align: center;">
+				<h1>楠哥汽修</h1>
 			</div>
 
 			<div class="container">
 				<div class="row">
-					<div class="col-xs-3 col-sm-6">
+					<div class="col-md-9 col-sm-6" style="text-align: center;">
 						<div class="btn-group btn-group-lg">
 							<button id="car" valid="" type="button" class="btn btn-default" data-toggle="modal" data-target="#Modal">品牌</button>
 							<button id="car_level1" levelone="" type="button" class="btn btn-default" data-toggle="modal" data-target="#Modal1">车系</button>
@@ -33,7 +33,7 @@
 							<button id="part" partid="" type="button" class="btn btn-default" data-toggle="modal" data-target="#Modalpart">配件</button>
 						</div>
 					</div>
-					<div class="col-xs-3 col-sm-6">
+					<div class="col-md-3 col-sm-6">
 						<div class="btn-group btn-group-lg">
 							<button id="query" type="button" class="btn btn-info">查询</button>
 						</div>
@@ -123,9 +123,11 @@
 		</div>
 	</body>
 	<script type="text/javascript">
+		host_url = 'http://139.199.166.127'	;
+//		host_url = 'http://127.0.0.1';
 		$('#car').on('click',function(){
 			$.ajax( {
-			    url:'http://www.hhhgo.cn/mountings/web/index.php/Connecter/Car/get_car',
+			    url:host_url + '/mountings/web/index.php/Connecter/Car/get_car',
 			    data:{
 			    },
 			    type:'POST',
@@ -144,7 +146,7 @@
 		
 		$('#car_level1').on('click',function(){
 			$.ajax( {
-			    url:'http://www.hhhgo.cn/mountings/web/index.php/Connecter/Car/get_levelone',
+			    url:host_url + '/mountings/web/index.php/Connecter/Car/get_levelone',
 			    data:{
 			    		level1_bid:$('#car').attr("valid"),
 			    },
@@ -165,7 +167,7 @@
 				
 		$('#car_level2').on('click',function(){
 			$.ajax( {
-			    url:'http://www.hhhgo.cn/mountings/web/index.php/Connecter/Car/get_leveltwo',
+			    url:host_url + '/mountings/web/index.php/Connecter/Car/get_leveltwo',
 			    data:{
 			    		level2_m1id:$('#car_level1').attr("levelone"),
 			    },
@@ -186,7 +188,7 @@
 				
 		$('#car_level3').on('click',function(){
 			$.ajax( {
-			    url:'http://www.hhhgo.cn/mountings/web/index.php/Connecter/Car/get_levelthree',
+			    url:host_url + '/mountings/web/index.php/Connecter/Car/get_levelthree',
 			    data:{
 			    		level3_m2id:$('#car_level2').attr("leveltwo"),
 			    },
@@ -206,9 +208,9 @@
 		
 		$('#part').on('click',function(){
 			$.ajax( {
-			    url:'http://www.hhhgo.cn/mountings/web/index.php/Connecter/Car/get_part',
+			    url:host_url + '/mountings/web/index.php/Connecter/Car/get_part',
 			    data:{
-//			    		partid:$('#part').attr("partid")
+			    		item_m3id:$('#car_level3').attr("levelthree")
 			    },
 			    type:'POST',
 			    dataType:'json',
@@ -271,7 +273,7 @@
 			item_m3id = $('#car_level3').attr("levelthree");
 			item_partid = $('#part').attr("partid");
 			$.ajax( {
-			    url:'http://www.hhhgo.cn/mountings/web/index.php/Connecter/Car/get_item',
+			    url:host_url + '/mountings/web/index.php/Connecter/Car/get_item',
 			    data:{
 			    		item_m3id:item_m3id,
 			    		item_partid:item_partid
@@ -279,12 +281,19 @@
 			    type:'POST',
 			    dataType:'json',
 			    success:function(data) {
-			       	var s="";
-					for(var i=0;i<data.length;++i){
-						s += '<img src="'+data[i].item_img+'"/>';
-						s +='<div>'+data[i].item_OE+'</div>'
+			    	if(data.length==0){
+			    		var s="";
+			    		$('.yiparts_items').html(s);
+			    	}else{
+			    		var s="";
+						for(var i=0;i<data.length;++i){
+							s += '<div><img src="'+data[i].item_img+'"/>';
+							s +='<span>'+data[i].item_oe+'</span>&nbsp;&nbsp;';
+							s +='<span>'+data[i].item_arg1+'</span></div>';
+						}
 						$('.yiparts_items').html(s);
-					}
+			    	}
+			       	
 			     },
 			     error : function(XMLHttpRequest, textStatus, errorThrown) {
 			     }

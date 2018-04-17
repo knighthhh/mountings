@@ -50,8 +50,12 @@ class CarController extends Controller {
 
 	public function get_part(){
 	    $model = M('partid');
-        //$data['partid'] = I('post.partid');
-        $res = $model-> select();
+        $data['item_m3id'] = I('post.item_m3id');
+	    $res = $model
+	    	->alias('a')
+	    	->join('__YIPARTS_ITEMS__ b on a.partid=b.item_partid','LEFT')
+	    	->group("partid")->where($data)->select();
+//      $res = $model-> select();
     	echo json_encode($res);
 	}
 
