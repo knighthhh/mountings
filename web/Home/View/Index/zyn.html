@@ -281,10 +281,10 @@
 			    success:function(data) {
 			       	var s="";
 					for(var i=0;i<data.length;++i){
-						
 						s += '<img src="'+data[i].item_img+'"/>';
 						s +='<div>'+data[i].item_OE+'</div>'
-					$('.yiparts_items').html(s);
+						$('.yiparts_items').html(s);
+					}
 			     },
 			     error : function(XMLHttpRequest, textStatus, errorThrown) {
 			     }
