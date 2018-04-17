@@ -75,7 +75,7 @@
 			    success:function(data) {
 			       	var s="";
 					for(var i=0;i<data.length;++i){
-						s + = '<button vaule="'+data[i].valid+'" type="button" class="btn btn-warning ">'+data[i].car_name+'</button>';
+						s += '<button vaule="'+data[i].valid+'" type="button" class="btn btn-warning ">'+data[i].car_name+'</button>';
 					}
 					$('.modal-body').html(s);
 			     },
