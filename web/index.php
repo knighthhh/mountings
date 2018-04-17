@@ -3,7 +3,7 @@
 define("APP_DEBUG", False);
 
 
-define("SITE_URL", "http://www.aptacam.com");
+define("SITE_URL", "139.199.166.127");
 #define("SITE_URL", "http://127.0.0.1");
 
 //定义前台界面CSS,image,js路径
