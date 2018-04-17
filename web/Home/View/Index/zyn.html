@@ -27,15 +27,15 @@
 					<div class="col-xs-3 col-sm-6">
 						<div class="btn-group btn-group-lg">
 							<button id="car" valid="" type="button" class="btn btn-default" data-toggle="modal" data-target="#Modal">品牌</button>
-							<button id="car_level1" type="button" class="btn btn-default" data-toggle="modal" data-target="#Modal1">车系</button>
-							<button id="car_level2" type="button" class="btn btn-default" data-toggle="modal" data-target="#Modal2">车型</button>
-							<button id="car_level3" type="button" class="btn btn-default" data-toggle="modal" data-target="#Modal3">车型明细</button>
-							<button id="part" type="button" class="btn btn-default" data-toggle="modal" data-target="#Modalpart">配件</button>
+							<button id="car_level1" levelone="" type="button" class="btn btn-default" data-toggle="modal" data-target="#Modal1">车系</button>
+							<button id="car_level2" leveltwo="" type="button" class="btn btn-default" data-toggle="modal" data-target="#Modal2">车型</button>
+							<button id="car_level3" levelthree="" type="button" class="btn btn-default" data-toggle="modal" data-target="#Modal3">车型明细</button>
+							<button id="part" partid="" type="button" class="btn btn-default" data-toggle="modal" data-target="#Modalpart">配件</button>
 						</div>
 					</div>
 					<div class="col-xs-3 col-sm-6">
 						<div class="btn-group btn-group-lg">
-							<button type="button" class="btn btn-default">查询</button>
+							<button type="button" class="btn btn-info">查询</button>
 						</div>
 					</div>
 				</div>
@@ -47,15 +47,71 @@
 					<div class="modal-content">
 						<div class="modal-header">
 							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-							<h4 class="modal-title" id="myModalLabel">模态框（Modal）标题</h4>
+							<h4 class="modal-title" >品牌</h4>
 						</div>
 						<div class="modal-body">
-							<button type="button" class="btn btn-warning ">成功</button>
-							<button type="button" class="btn btn-warning ">成功</button>
 						</div>
 						<div class="modal-footer">
-							<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-							<button type="button" class="btn btn-primary">提交更改</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="modal fade" id="Modal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+							<h4 class="modal-title" >车系</h4>
+						</div>
+						<div class="modal-body">
+						</div>
+						<div class="modal-footer">
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="modal fade" id="Modal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+							<h4 class="modal-title" >车型</h4>
+						</div>
+						<div class="modal-body">
+						</div>
+						<div class="modal-footer">
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="modal fade" id="Modal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+							<h4 class="modal-title" >车型明细</h4>
+						</div>
+						<div class="modal-body">
+						</div>
+						<div class="modal-footer">
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="modal fade" id="Modalpart" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+							<h4 class="modal-title" >配件</h4>
+						</div>
+						<div class="modal-body">
+						</div>
+						<div class="modal-footer">
 						</div>
 					</div>
 				</div>
@@ -68,7 +124,6 @@
 			$.ajax( {
 			    url:'http://www.hhhgo.cn/mountings/web/index.php/Connecter/Car/get_car',
 			    data:{
-//			    		aa:'aa'
 			    },
 			    type:'GET',
 			    dataType:'json',
@@ -80,20 +135,130 @@
 					$('.modal-body').html(s);
 			     },
 			     error : function(XMLHttpRequest, textStatus, errorThrown) {
-			            alert(XMLHttpRequest.status + status + errorThrown);
+			     }
+			});
+		})
+		
+		$('#car_level1').on('click',function(){
+			$.ajax( {
+			    url:'http://www.hhhgo.cn/mountings/web/index.php/Connecter/Car/get_levelone',
+			    data:{
+			    		level1_bid:$('#car').attr("valid");
+			    },
+			    type:'POST',
+			    dataType:'json',
+			    success:function(data) {
+			       	var s="";
+					for(var i=0;i<data.length;++i){
+						s += '<button levelone="'+data[i].level1_m1id+'" type="button" class="btn btn-warning ">'+data[i].level1_name+'</button>&nbsp;';
+					}
+					$('.modal-body').html(s);
+			     },
+			     error : function(XMLHttpRequest, textStatus, errorThrown) {
+			     }
+			});
+		})
+		
+				
+		$('#car_level2').on('click',function(){
+			$.ajax( {
+			    url:'http://www.hhhgo.cn/mountings/web/index.php/Connecter/Car/get_leveltwo',
+			    data:{
+			    },
+			    type:'GET',
+			    dataType:'json',
+			    success:function(data) {
+			       	var s="";
+					for(var i=0;i<data.length;++i){
+						s += '<button leveltwo="'+data[i].level2_m2id+'" type="button" class="btn btn-warning ">'+data[i].level2_name+'</button>&nbsp;';
+					}
+					$('.modal-body').html(s);
+			     },
+			     error : function(XMLHttpRequest, textStatus, errorThrown) {
+			     }
+			});
+		})
+		
+				
+		$('#car_level3').on('click',function(){
+			$.ajax( {
+			    url:'http://www.hhhgo.cn/mountings/web/index.php/Connecter/Car/get_levelthree',
+			    data:{
+			    },
+			    type:'GET',
+			    dataType:'json',
+			    success:function(data) {
+			       	var s="";
+					for(var i=0;i<data.length;++i){
+						s += '<button levelthree="'+data[i].level3_m3id+'" type="button" class="btn btn-warning ">'+data[i].chexing+'</button>&nbsp;';
+					}
+					$('.modal-body').html(s);
+			     },
+			     error : function(XMLHttpRequest, textStatus, errorThrown) {
+			     }
+			});
+		})
+		
+		$('#part').on('click',function(){
+			$.ajax( {
+			    url:'http://www.hhhgo.cn/mountings/web/index.php/Connecter/Car/get_part',
+			    data:{
+			    },
+			    type:'GET',
+			    dataType:'json',
+			    success:function(data) {
+			       	var s="";
+					for(var i=0;i<data.length;++i){
+						s += '<button partid="'+data[i].partid+'" type="button" class="btn btn-warning ">'+data[i].part_name+'</button>&nbsp;';
+					}
+					$('.modal-body').html(s);
+			     },
+			     error : function(XMLHttpRequest, textStatus, errorThrown) {
 			     }
 			});
 		})
 
+//事件、/////////////////////////////、、、、、、、、、、、、、、、、、、
 
 		$('#Modal .modal-body').on('click','button',function(){
-
-				valid = $(this).attr('valid');
-				name = $(this).html();
-				$('#car').attr("valid",valid);
-				$('#car').html(name);
-				$('#Modal').modal('hide');
-			})
+			valid = $(this).attr('valid');
+			name = $(this).html();
+			$('#car').attr("valid",valid);
+			$('#car').html(name);
+			$('#Modal').modal('hide');
+		})
+		
+		$('#Modal1 .modal-body').on('click','button',function(){
+			levelone = $(this).attr('levelone');
+			name = $(this).html();
+			$('#car_level1').attr("levelone",levelone);
+			$('#car_level1').html(name);
+			$('#Modal1').modal('hide');
+		})
+		
+		$('#Modal2 .modal-body').on('click','button',function(){
+			leveltwo = $(this).attr('leveltwo');
+			name = $(this).html();
+			$('#car_level2').attr("leveltwo",leveltwo);
+			$('#car_level2').html(name);
+			$('#Modal2').modal('hide');
+		})
+		
+		$('#Modal3 .modal-body').on('click','button',function(){
+			levelthree = $(this).attr('levelthree');
+			name = $(this).html();
+			$('#car_level3').attr("levelthree",levelthree);
+			$('#car_level3').html(name);
+			$('#Modal3').modal('hide');
+		})
+		
+		$('#Modalpart .modal-body').on('click','button',function(){
+			partid = $(this).attr('partid');
+			name = $(this).html();
+			$('#part').attr("partid",partid);
+			$('#part').html(name);
+			$('#Modalpart').modal('hide');
+		})
 	</script>
 
 </html>

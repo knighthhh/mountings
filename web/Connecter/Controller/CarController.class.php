@@ -18,12 +18,37 @@ class CarController extends Controller {
 	    $this->display();
 	}
 
+
+
+
 	public function get_car(){
 	    $model = M('car');
         $res = $model -> select();
+    	echo json_encode($res);
+	}
 
+	public function get_levelone(){
+	    $model = M('car');
+	    $data['level1_bid'] = I('post.level1_bid');
+        $res = $model->where($data) -> select();
+    	echo json_encode($res);
+	}
 
+	public function get_leveltwo(){
+	    $model = M('car');
+        $res = $model -> select();
+    	echo json_encode($res);
+	}
 
+	public function get_levelthree(){
+	    $model = M('car');
+        $res = $model -> select();
+    	echo json_encode($res);
+	}
+
+	public function get_part(){
+	    $model = M('car');
+        $res = $model -> select();
     	echo json_encode($res);
 	}
 }
