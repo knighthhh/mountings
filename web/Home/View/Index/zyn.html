@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+		<!-- 可选的Bootstrap主题文件（一般不使用） -->
+		<script src="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"></script>
+
+		<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+		<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+
+		<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+		<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<title>Title</title>
+	</head>
+
+	<body>
+		<div>
+			<div>
+				<h1>qi pei xi tong</h1>
+			</div>
+
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-3 col-sm-6">
+						<div class="btn-group btn-group-lg">
+							<button id="car" type="button" class="btn btn-default" data-toggle="modal" data-target="#Modal">品牌</button>
+							<button id="car_level1" type="button" class="btn btn-default" data-toggle="modal" data-target="#Modal1">车系</button>
+							<button id="car_level2" type="button" class="btn btn-default" data-toggle="modal" data-target="#Modal2">车型</button>
+							<button id="car_level3" type="button" class="btn btn-default" data-toggle="modal" data-target="#Modal3">车型明细</button>
+							<button id="part" type="button" class="btn btn-default" data-toggle="modal" data-target="#Modalpart">配件</button>
+						</div>
+					</div>
+					<div class="col-xs-3 col-sm-6">
+						<div class="btn-group btn-group-lg">
+							<button type="button" class="btn btn-default">查询</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- 模态框（Modal） -->
+			<div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+							<h4 class="modal-title" id="myModalLabel">模态框（Modal）标题</h4>
+						</div>
+						<div class="modal-body">
+							在这里添加一些文本
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+							<button type="button" class="btn btn-primary">提交更改</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</body>
+	<script type="text/javascript">
+		$('#car').on('click',function(){
+			$.ajax( {
+			    url:'http://www.hhhgo.cn/mountings/web/index.php/Connecter/Car/get_car',// 跳转到 action
+			    data:{
+			    		aa:'aa'
+			    },
+			    type:'GET',
+			    dataType:'json',
+//			    jsonp: "callbackparam",
+			    success:function(data) {
+			       alert('successssss');
+			     },
+			     error : function(XMLHttpRequest, textStatus, errorThrown) {
+			            alert(XMLHttpRequest.status + status + errorThrown);
+			     }
+			});
+
+//			$.post("http://www.hhhgo.cn/mountings/web/index.php/Connecter/Car/get_car",{suggest:'s'},dataType:'jsonp',function(result){
+//			    alert(1213123)
+//			  });
+
+			html='hahaha';
+			$('.modal-body').html(html);
+		})
+	</script>
+
+</html>
