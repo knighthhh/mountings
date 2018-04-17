@@ -164,6 +164,7 @@
 			$.ajax( {
 			    url:'http://www.hhhgo.cn/mountings/web/index.php/Connecter/Car/get_leveltwo',
 			    data:{
+			    		level2_m1id:$('#car_level1').attr("levelone"),
 			    },
 			    type:'GET',
 			    dataType:'json',
@@ -184,6 +185,7 @@
 			$.ajax( {
 			    url:'http://www.hhhgo.cn/mountings/web/index.php/Connecter/Car/get_levelthree',
 			    data:{
+			    		level3_m2id:$('#car_level2').attr("leveltwo"),
 			    },
 			    type:'GET',
 			    dataType:'json',
@@ -203,6 +205,7 @@
 			$.ajax( {
 			    url:'http://www.hhhgo.cn/mountings/web/index.php/Connecter/Car/get_part',
 			    data:{
+//			    		partid:$('#part').attr("partid")
 			    },
 			    type:'GET',
 			    dataType:'json',

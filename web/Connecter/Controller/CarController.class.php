@@ -35,20 +35,23 @@ class CarController extends Controller {
 	}
 
 	public function get_leveltwo(){
-	    $model = M('car');
-        $res = $model -> select();
+	    $model = M('car_level2');
+        $data['level2_m1id'] = I('post.level2_m1id');
+        $res = $model->where($data) -> select();
     	echo json_encode($res);
 	}
 
 	public function get_levelthree(){
-	    $model = M('car');
-        $res = $model -> select();
+	    $model = M('car_level3');
+        $data['level3_m2id'] = I('post.level3_m2id');
+        $res = $model->where($data) -> select();
     	echo json_encode($res);
 	}
 
 	public function get_part(){
-	    $model = M('car');
-        $res = $model -> select();
+	    $model = M('partid');
+        //$data['partid'] = I('post.partid');
+        $res = $model-> select();
     	echo json_encode($res);
 	}
 }
