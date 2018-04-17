@@ -50,7 +50,8 @@
 							<h4 class="modal-title" id="myModalLabel">模态框（Modal）标题</h4>
 						</div>
 						<div class="modal-body">
-							在这里添加一些文本
+							<button type="button" class="btn btn-warning ">成功</button>
+							<button type="button" class="btn btn-warning ">成功</button>
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
@@ -65,27 +66,27 @@
 	<script type="text/javascript">
 		$('#car').on('click',function(){
 			$.ajax( {
-			    url:'http://www.hhhgo.cn/mountings/web/index.php/Connecter/Car/get_car',// 跳转到 action
+			    url:'http://www.hhhgo.cn/mountings/web/index.php/Connecter/Car/get_car',
 			    data:{
-			    		aa:'aa'
+//			    		aa:'aa'
 			    },
 			    type:'GET',
 			    dataType:'json',
-//			    jsonp: "callbackparam",
 			    success:function(data) {
-			       alert('successssss');
+			       	var s="";
+					for(var i=0;i<data.length;++i){
+						s + = '<button vaule="'+data[i].valid+'" type="button" class="btn btn-warning ">'+data[i].car_name+'</button>';
+					}
+					$('.modal-body').html(s);
 			     },
 			     error : function(XMLHttpRequest, textStatus, errorThrown) {
 			            alert(XMLHttpRequest.status + status + errorThrown);
 			     }
 			});
 
-//			$.post("http://www.hhhgo.cn/mountings/web/index.php/Connecter/Car/get_car",{suggest:'s'},dataType:'jsonp',function(result){
-//			    alert(1213123)
-//			  });
 
-			html='hahaha';
-			$('.modal-body').html(html);
+//			html='hahaha';
+//			$('.modal-body').html(html);
 		})
 	</script>
 
