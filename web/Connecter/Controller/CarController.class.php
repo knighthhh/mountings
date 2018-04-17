@@ -28,7 +28,7 @@ class CarController extends Controller {
 	}
 
 	public function get_levelone(){
-	    $model = M('car');
+	    $model = M('car_level1');
 	    $data['level1_bid'] = I('post.level1_bid');
         $res = $model->where($data) -> select();
     	echo json_encode($res);
