@@ -1,7 +1,69 @@
-<!DOCTYPE html>
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
 <html>
 	
-	<include file="Public:header"/>
+	<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+	<title>利用网络数据实现汽车配件标准化</title>
+	<link rel="stylesheet" type="text/css" href="<?php echo (HOME_CSS_URL); ?>/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo (HOME_CSS_URL); ?>/common.css"/>
+	<link rel="stylesheet" type="text/css" href="<?php echo (HOME_CSS_URL); ?>/style.css"/>
+	<script src="<?php echo (HOME_JS_URL); ?>/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="<?php echo (HOME_JS_URL); ?>/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+<body>
+	<!--<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<a href="#" class="navbar-brand logo"><img src="<?php echo (HOME_IMAGES_URL); ?>/logo.png"  alt="Aptacam"></a>
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse" id="navbar-collapse">
+				<ul class="nav navbar-nav navbar-right" id="navbar-font">
+					<li class="Home"><a href="/mountings/web/index.php/Home/Index/index"><?php echo ($nav['home']); ?></a></li>
+					<li class="Solutions"><a href="/mountings/web/index.php/Home/Tab/solutions" ><?php echo ($nav['solutions']); ?></a></li>
+					<li class="Software"><a href="/mountings/web/index.php/Home/Tab/download"><?php echo ($nav['download']); ?></a></li>
+					<li class="Knowledge"><a href="/mountings/web/index.php/Home/Tab/knowledge"><?php echo ($nav['knowledge']); ?></a></li>
+					<li class="About"><a href="/mountings/web/index.php/Home/Tab/about"><?php echo ($nav['about']); ?></a></li>
+					<li class="Contact"><a href="/mountings/web/index.php/Home/Tab/contact"><?php echo ($nav['contact']); ?></a></li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+							<?php echo ($nav['language']); ?><b class="caret"></b>
+						</a>
+						<ul class="dropdown-menu">
+							<li><a href="?l=en-us">English</a></li>
+							<li><a href="?l=zh-cn" target="_blank">中文</a></li>
+						</ul>
+					</li>
+				</ul>	
+			</div>
+		</div>
+	</nav>-->
+	
+	<nav class="navbar navbar-default navbar-fixed-top">
+			<div class="container">
+				<div class="navbar-header">
+					<a href="#" class="navbar-brand logo" style="padding-top: 10px;font-size: 24px;"><span class="glyphicon glyphicon-home"></span> 汽配查询系统</a>
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+				</div>
+				<div class="collapse navbar-collapse" id="navbar-collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li class="index "><a href="/mountings/web/index.php/Home/Index/index"><span class="glyphicon glyphicon-fire"></span> 首页</a></li>
+						<li class="chaxun"><a href="/mountings/web/index.php/Home/Tab/chaxun"><span class="glyphicon glyphicon-list"></span> 查询配件</a></li>
+						<li class="about"><a href="/mountings/web/index.php/Home/Tab/about"><span class="glyphicon glyphicon-question-sign"></span> 我的信息</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
 	<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"></script>
 	<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
@@ -16,13 +78,13 @@
 			</ol>
 			<div class="carousel-inner">
 				<div class="item active" style="background-color: #FFFFFF;">
-					<img src="{$Think.const.HOME_IMAGES_URL}/slide1.jpg"/>
+					<img src="<?php echo (HOME_IMAGES_URL); ?>/slide1.jpg"/>
 				</div>
 				<div class="item" style="background-color: #FFFFFF;">
-					<img src="{$Think.const.HOME_IMAGES_URL}/slide2.jpg"/>
+					<img src="<?php echo (HOME_IMAGES_URL); ?>/slide2.jpg"/>
 				</div>
 				<div class="item" style="background-color: #FFFFFF;">
-					<img src="{$Think.const.HOME_IMAGES_URL}/slide3.jpg"/>
+					<img src="<?php echo (HOME_IMAGES_URL); ?>/slide3.jpg"/>
 				</div>
 			</div>
 			<a href="#myCarousel" data-slide="prev" class="carousel-control left">
@@ -42,7 +104,7 @@
 					<div class="col-md-6 col">
 						<div class="media">
 							<div class="media-left">
-								<a href="#"><img class="media-object" src="{$Think.const.HOME_IMAGES_URL}/tab1-1.jpg"/></a>
+								<a href="#"><img class="media-object" src="<?php echo (HOME_IMAGES_URL); ?>/tab1-1.jpg"/></a>
 							</div>
 							<div class="media-body">
 								<h2 class="media-heading">齿轮</h2>
@@ -53,7 +115,7 @@
 					<div class="col-md-6 col">
 						<div class="media">
 							<div class="media-left">
-								<a href="#"><img class="media-object" src="{$Think.const.HOME_IMAGES_URL}/tab1-2.jpg"/></a>
+								<a href="#"><img class="media-object" src="<?php echo (HOME_IMAGES_URL); ?>/tab1-2.jpg"/></a>
 							</div>
 							<div class="media-body">
 								<h2 class="media-heading">起动机</h2>
@@ -64,7 +126,7 @@
 					<div class="col-md-6 col">
 						<div class="media">
 							<div class="media-left">
-								<a href="#"><img class="media-object" src="{$Think.const.HOME_IMAGES_URL}/tab1-3.jpg"/></a>
+								<a href="#"><img class="media-object" src="<?php echo (HOME_IMAGES_URL); ?>/tab1-3.jpg"/></a>
 							</div>
 							<div class="media-body">
 								<h2 class="media-heading">刹车片</h2>
@@ -75,7 +137,7 @@
 					<div class="col-md-6 col">
 						<div class="media">
 							<div class="media-left">
-								<a href="#"><img class="media-object" src="{$Think.const.HOME_IMAGES_URL}/tab1-4.jpg"/></a>
+								<a href="#"><img class="media-object" src="<?php echo (HOME_IMAGES_URL); ?>/tab1-4.jpg"/></a>
 							</div>
 							<div class="media-body">
 								<h2 class="media-heading">发动机</h2>
@@ -91,7 +153,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-6 col-sm-6 tab2s-img">
-						<img src="{$Think.const.HOME_IMAGES_URL}/tab2.jpg" class="auto img-responsive center-block"/>
+						<img src="<?php echo (HOME_IMAGES_URL); ?>/tab2.jpg" class="auto img-responsive center-block"/>
 					</div>
 					<div class="text col-md-6 col-sm-6 tab2-text">
 						<h3>兰州是中国唯一一座被黄河穿城而过的省会城市。</h3>
@@ -110,7 +172,7 @@
 						<p>西北地区的交通枢纽城市，全国大陆陆域板块几何中心城市</p>
 					</div>
 					<div class="col-md-6 col-sm-6">
-						<img src="{$Think.const.HOME_IMAGES_URL}/tab3.jpg"  class="auto img-responsive center-block"/>
+						<img src="<?php echo (HOME_IMAGES_URL); ?>/tab3.jpg"  class="auto img-responsive center-block"/>
 					</div>
 				</div>
 			</div>

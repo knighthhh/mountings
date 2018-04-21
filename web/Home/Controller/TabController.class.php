@@ -73,4 +73,10 @@ class TabController extends Controller {
      
         $this->display('contact');
     }
+    
+    public function chaxun(){
+    	
+     
+        $this->display();
+    }
 }

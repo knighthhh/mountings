@@ -1,28 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
-
-	<head>
-		<meta charset="UTF-8">
-		<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-
-		<!-- 可选的Bootstrap主题文件（一般不使用） -->
+<html>
+	
+	<include file="Public:header"/>
+		<!--<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 		<script src="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"></script>
-
-		<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
 		<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
-
-		<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 		<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-		<title>Title</title>
-	</head>
+		<title>Title</title>-->
 
 	<body>
-		<div class="container">
+		<!--<div class="container">
 			<div style="text-align: center;">
-				<h1>楠哥汽修</h1>
+				<h1>利用网络数据实现汽车配件标准化</h1>
 			</div>
+			
+			<br /><br />-->
 
-			<div class="container">
+			<div class="container" style="margin-top: 50px;">
 				<div class="row">
 					<div class="col-md-9 col-sm-6" style="text-align: center;">
 						<div class="btn-group btn-group-lg">
@@ -38,6 +32,29 @@
 							<button id="query" type="button" class="btn btn-info">查询</button>
 						</div>
 					</div>
+				</div>
+				<br /><br /><br /><br />
+				<div class="row yiparts_items">
+					<!--<div class="col-md-12" >
+						<div class="row-fluid">
+							<div class="col-md-3">
+								<img alt="140x140" src="img/a.jpg" />
+							</div>
+							<div class="col-md-4">
+								<blockquote>
+									<p>github是一个全球化的开源社区.</p>
+									<small>关键词 </small>
+								</blockquote> 
+							</div>
+							<div class="col-md-5">
+								<ul style="list-style: none;">
+									<li >
+										新闻资讯
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>-->
 				</div>
 			</div>
 
@@ -117,14 +134,13 @@
 				</div>
 			</div>
 			
-			<div class="yiparts_items">
-				
-			</div>
+			
 		</div>
 	</body>
 	<script type="text/javascript">
-		host_url = 'http://139.199.166.127'	;
-//		host_url = 'http://127.0.0.1';
+		$('.chaxun').addClass('active');
+				host_url = 'http://127.0.0.1';
+//		host_url = 'http://139.199.166.127'	;
 		$('#car').on('click',function(){
 			$.ajax( {
 			    url:host_url + '/mountings/web/index.php/Connecter/Car/get_car',
@@ -234,6 +250,12 @@
 			$('#car').attr("valid",valid);
 			$('#car').html(name);
 			$('#Modal').modal('hide');
+			
+			$('#car_level1').html('车系');
+			$('#car_level2').html('车型');
+			$('#car_level3').html('车型明细');
+			$('#part').html('配件');
+			
 		})
 		
 		$('#Modal1 .modal-body').on('click','button',function(){
@@ -242,6 +264,10 @@
 			$('#car_level1').attr("levelone",levelone);
 			$('#car_level1').html(name);
 			$('#Modal1').modal('hide');
+			
+			$('#car_level2').html('车型');
+			$('#car_level3').html('车型明细');
+			$('#part').html('配件');
 		})
 		
 		$('#Modal2 .modal-body').on('click','button',function(){
@@ -250,6 +276,9 @@
 			$('#car_level2').attr("leveltwo",leveltwo);
 			$('#car_level2').html(name);
 			$('#Modal2').modal('hide');
+			
+			$('#car_level3').html('车型明细');
+			$('#part').html('配件');
 		})
 		
 		$('#Modal3 .modal-body').on('click','button',function(){
@@ -258,6 +287,8 @@
 			$('#car_level3').attr("levelthree",levelthree);
 			$('#car_level3').html(name);
 			$('#Modal3').modal('hide');
+			
+			$('#part').html('配件');
 		})
 		
 		$('#Modalpart .modal-body').on('click','button',function(){
@@ -287,9 +318,12 @@
 			    	}else{
 			    		var s="";
 						for(var i=0;i<data.length;++i){
-							s += '<div><img src="'+data[i].item_img+'"/>';
-							s +='<span>'+data[i].item_oe+'</span>&nbsp;&nbsp;';
-							s +='<span>'+data[i].item_arg1+'</span></div>';
+							s +='<div class="col-md-12" ><div class="row-fluid"><div class="col-md-3">';
+							s +='<img alt="140x140" src="'+data[i].item_img+'" /></div><div class="col-md-4">';
+							s +='<blockquote><p>'+$("#part").html()+'</p><small>'+data[i].item_oe+'</small></blockquote></div><div class="col-md-5"><ul style="list-style: none;">';
+							s +='<li >'+data[i].item_arg1+'</li><li>'+data[i].item_arg2+'</li><li>'+data[i].item_arg3+'</li><li>'+data[i].item_arg4+'</li><li>'+data[i].item_arg5+'</li></ul></div></div></div>';
+//							
+								
 						}
 						$('.yiparts_items').html(s);
 			    	}

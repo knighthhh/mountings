@@ -1,12 +1,16 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
-	<title>Aptacam - Diagnostic Device, Disease Discovery</title>
+	<title>利用网络数据实现汽车配件标准化</title>
 	<link rel="stylesheet" type="text/css" href="{$Think.const.HOME_CSS_URL}/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="{$Think.const.HOME_CSS_URL}/common.css"/>
+	<link rel="stylesheet" type="text/css" href="{$Think.const.HOME_CSS_URL}/style.css"/>
+	<script src="{$Think.const.HOME_JS_URL}/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="{$Think.const.HOME_JS_URL}/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+
 </head>
 <body>
-	<nav class="navbar navbar-default navbar-fixed-top">
+	<!--<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
 				<a href="#" class="navbar-brand logo"><img src="{$Think.const.HOME_IMAGES_URL}/logo.png"  alt="Aptacam"></a>
@@ -36,4 +40,24 @@
 				</ul>	
 			</div>
 		</div>
-	</nav>
+	</nav>-->
+	
+	<nav class="navbar navbar-default navbar-fixed-top">
+			<div class="container">
+				<div class="navbar-header">
+					<a href="#" class="navbar-brand logo" style="padding-top: 10px;font-size: 24px;"><span class="glyphicon glyphicon-home"></span> 汽配查询系统</a>
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+				</div>
+				<div class="collapse navbar-collapse" id="navbar-collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li class="index "><a href="__MODULE__/Index/index"><span class="glyphicon glyphicon-fire"></span> 首页</a></li>
+						<li class="chaxun"><a href="__MODULE__/Tab/chaxun"><span class="glyphicon glyphicon-list"></span> 查询配件</a></li>
+						<li class="about"><a href="__MODULE__/Tab/about"><span class="glyphicon glyphicon-question-sign"></span> 我的信息</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
