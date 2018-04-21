@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
 <html lang="zh-cn">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="renderer" content="webkit">
     <title>汽配管理中心</title>  
-    <link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}pintuer.css">
-    <link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}admin.css">
-    <link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}font-awesome.min.css">
-    <script src="{$Think.const.ADMIN_JS_URL}jquery.js"></script>   
+    <link rel="stylesheet" href="<?php echo (ADMIN_CSS_URL); ?>pintuer.css">
+    <link rel="stylesheet" href="<?php echo (ADMIN_CSS_URL); ?>admin.css">
+    <link rel="stylesheet" href="<?php echo (ADMIN_CSS_URL); ?>font-awesome.min.css">
+    <script src="<?php echo (ADMIN_JS_URL); ?>jquery.js"></script>   
     <style type="text/css">
         .leftnav-title{background: #f2f9fd;color: black;height: 40px}
         .header{background: #449d9d;}
@@ -19,11 +19,11 @@
 <div class="header bg-main">
   <div class="logo margin-big-left fadein-top">
 
-    <h1><img src="{$Think.const.ADMIN_IMAGES_URL}y.png" class="radius-circle rotate-hover" height="50" alt="" />汽配后台管理中心</h1>
+    <h1><img src="<?php echo (ADMIN_IMAGES_URL); ?>y.png" class="radius-circle rotate-hover" height="50" alt="" />汽配后台管理中心</h1>
 
   </div>
   <!-- <div class="head-l"><a class="button button-little bg-blue" href="" target="_blank"><span class="icon-home"></span> 前台首页</a> &nbsp;&nbsp;<a class="button button-little bg-red" href="login.html"><span class="icon-power-off"></span> 退出登录</a> </div> -->
-  <div class="head-l"><a class="button button-little bg-red" href="__MODULE__/Login/logout"><span class="icon-power-off"></span> 退出登录</a> </div>
+  <div class="head-l"><a class="button button-little bg-red" href="/mountings/web/index.php/Admin/Login/logout"><span class="icon-power-off"></span> 退出登录</a> </div>
 </div>
 <div class="leftnav" style="overflow-x:scroll">
   <div class="leftnav-title" style="font-size: 16px"><strong><span class="fa fa-bars"></span>菜单列表</strong></div>
@@ -31,12 +31,8 @@
   <ul> 
     
     
-   	<?php 
-        echo authCheck(MODULE_NAME.'/Knowdetail/get_email',cookie('id'),'<li><a href="__MODULE__/Knowdetail/get_email" target="right"><span class="icon-caret-right"></span>email</a></li>');
-     ?>
-    <?php 
-        echo authCheck(MODULE_NAME.'/Contact/get_text',cookie('id'),'<li><a href="__MODULE__/Contact/get_text" target="right"><span class="icon-caret-right"></span>message</a></li>');
-     ?>
+   	<?php  echo authCheck(MODULE_NAME.'/Knowdetail/get_email',cookie('id'),'<li><a href="/mountings/web/index.php/Admin/Knowdetail/get_email" target="right"><span class="icon-caret-right"></span>email</a></li>'); ?>
+    <?php  echo authCheck(MODULE_NAME.'/Contact/get_text',cookie('id'),'<li><a href="/mountings/web/index.php/Admin/Contact/get_text" target="right"><span class="icon-caret-right"></span>message</a></li>'); ?>
       
   </ul>   
   <h2><span class="fa fa-hospital-o active"></span>数据管理</h2>

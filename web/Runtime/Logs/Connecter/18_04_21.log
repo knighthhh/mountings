@@ -1706,3 +1706,283 @@ INFO: [ app_end ] --START--
 INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001216s ]
 INFO: [ app_end ] --END-- [ RunTime:0.001287s ]
 
+[ 2018-04-21T20:29:18+08:00 ] 127.0.0.1 /mountings/web/index.php/Connecter/Car/get_car
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000021s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000799s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001490s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002235s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004036s ]
+SQL: SHOW COLUMNS FROM `car` [ RunTime:0.0165s ]
+SQL: SELECT * FROM `car`  [ RunTime:0.0011s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001331s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001411s ]
+
+[ 2018-04-21T20:29:34+08:00 ] 127.0.0.1 /mountings/web/index.php/Connecter/Car/get_levelone
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000025s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000767s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001451s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001764s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003344s ]
+SQL: SHOW COLUMNS FROM `car_level1` [ RunTime:0.0237s ]
+SQL: SELECT * FROM `car_level1` WHERE `level1_bid` = '6'  [ RunTime:0.0010s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001271s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001359s ]
+
+[ 2018-04-21T20:29:35+08:00 ] 127.0.0.1 /mountings/web/index.php/Connecter/Car/get_leveltwo
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000021s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000776s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001112s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001774s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002994s ]
+SQL: SHOW COLUMNS FROM `car_level2` [ RunTime:0.0139s ]
+SQL: SELECT * FROM `car_level2` WHERE `level2_m1id` = '1091'  [ RunTime:0.0012s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001466s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001555s ]
+
+[ 2018-04-21T20:29:37+08:00 ] 127.0.0.1 /mountings/web/index.php/Connecter/Car/get_levelthree
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000023s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000793s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001108s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001784s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002998s ]
+SQL: SHOW COLUMNS FROM `car_level3` [ RunTime:0.0172s ]
+SQL: SELECT * FROM `car_level3` WHERE `level3_m2id` = '2430'  [ RunTime:0.0018s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001329s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001434s ]
+
+[ 2018-04-21T20:29:38+08:00 ] 127.0.0.1 /mountings/web/index.php/Connecter/Car/get_part
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000022s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000776s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002107s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.003372s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005671s ]
+SQL: SHOW COLUMNS FROM `partid` [ RunTime:0.0081s ]
+SQL: SELECT * FROM partid a LEFT JOIN yiparts_items b on a.partid=b.item_partid  WHERE `item_m3id` = '60290' GROUP BY partid  [ RunTime:0.1274s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001680s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001797s ]
+
+[ 2018-04-21T20:29:41+08:00 ] 127.0.0.1 /mountings/web/index.php/Connecter/Car/get_item
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000022s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000845s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001142s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001751s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003002s ]
+SQL: SHOW COLUMNS FROM `yiparts_items` [ RunTime:0.0091s ]
+SQL: SELECT * FROM `yiparts_items` WHERE `item_m3id` = '60290' AND `item_partid` = '160'  [ RunTime:0.0201s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001237s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001301s ]
+
+[ 2018-04-21T20:33:12+08:00 ] 127.0.0.1 /mountings/web/index.php/Connecter/Car/get_part
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000023s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000893s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001250s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002327s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003764s ]
+SQL: SHOW COLUMNS FROM `partid` [ RunTime:0.0079s ]
+SQL: SELECT * FROM partid a LEFT JOIN yiparts_items b on a.partid=b.item_partid  WHERE `item_m3id` = '60290' GROUP BY partid  [ RunTime:0.0971s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001575s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001667s ]
+
+[ 2018-04-21T20:33:16+08:00 ] 127.0.0.1 /mountings/web/index.php/Connecter/Car/get_car
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000035s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002377s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001384s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001737s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003233s ]
+SQL: SHOW COLUMNS FROM `car` [ RunTime:0.0118s ]
+SQL: SELECT * FROM `car`  [ RunTime:0.0011s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001349s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001428s ]
+
+[ 2018-04-21T20:33:21+08:00 ] 127.0.0.1 /mountings/web/index.php/Connecter/Car/get_item
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000021s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000754s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001209s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001839s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003160s ]
+SQL: SHOW COLUMNS FROM `yiparts_items` [ RunTime:0.0096s ]
+SQL: SELECT * FROM `yiparts_items` WHERE `item_m3id` = '60290' AND `item_partid` = '160'  [ RunTime:0.0222s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001226s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001290s ]
+
+[ 2018-04-21T20:33:25+08:00 ] 127.0.0.1 /mountings/web/index.php/Connecter/Car/get_levelone
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000022s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000762s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001105s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001782s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002994s ]
+SQL: SHOW COLUMNS FROM `car_level1` [ RunTime:0.0125s ]
+SQL: SELECT * FROM `car_level1` WHERE `level1_bid` = '6'  [ RunTime:0.0015s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001752s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001892s ]
+
+[ 2018-04-21T20:33:29+08:00 ] 127.0.0.1 /mountings/web/index.php/Connecter/Car/get_leveltwo
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000021s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000771s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001615s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.003132s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005075s ]
+SQL: SHOW COLUMNS FROM `car_level2` [ RunTime:0.0106s ]
+SQL: SELECT * FROM `car_level2` WHERE `level2_m1id` = '1093'  [ RunTime:0.0018s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001855s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001974s ]
+
+[ 2018-04-21T20:33:31+08:00 ] 127.0.0.1 /mountings/web/index.php/Connecter/Car/get_levelthree
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000022s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000782s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001107s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001639s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002857s ]
+SQL: SHOW COLUMNS FROM `car_level3` [ RunTime:0.0133s ]
+SQL: SELECT * FROM `car_level3` WHERE `level3_m2id` = '2399'  [ RunTime:0.0019s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001317s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001413s ]
+
+[ 2018-04-21T20:33:32+08:00 ] 127.0.0.1 /mountings/web/index.php/Connecter/Car/get_part
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000022s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000802s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001428s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.004270s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.006116s ]
+SQL: SHOW COLUMNS FROM `partid` [ RunTime:0.0092s ]
+SQL: SELECT * FROM partid a LEFT JOIN yiparts_items b on a.partid=b.item_partid  WHERE `item_m3id` = '' GROUP BY partid  [ RunTime:0.0773s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001240s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001315s ]
+
+[ 2018-04-21T20:33:34+08:00 ] 127.0.0.1 /mountings/web/index.php/Connecter/Car/get_item
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000022s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000739s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001049s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001684s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002844s ]
+SQL: SHOW COLUMNS FROM `yiparts_items` [ RunTime:0.0097s ]
+SQL: SELECT * FROM `yiparts_items` WHERE `item_m3id` = '' AND `item_partid` = '160'  [ RunTime:0.0198s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001316s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001383s ]
+
+[ 2018-04-21T20:33:36+08:00 ] 127.0.0.1 /mountings/web/index.php/Connecter/Car/get_part
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000022s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000800s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001216s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001829s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003156s ]
+SQL: SHOW COLUMNS FROM `partid` [ RunTime:0.0117s ]
+SQL: SELECT * FROM partid a LEFT JOIN yiparts_items b on a.partid=b.item_partid  WHERE `item_m3id` = '' GROUP BY partid  [ RunTime:0.0841s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001596s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001692s ]
+
+[ 2018-04-21T20:33:39+08:00 ] 127.0.0.1 /mountings/web/index.php/Connecter/Car/get_levelone
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000024s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001480s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001138s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001784s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003028s ]
+SQL: SHOW COLUMNS FROM `car_level1` [ RunTime:0.0129s ]
+SQL: SELECT * FROM `car_level1` WHERE `level1_bid` = '6'  [ RunTime:0.0010s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001212s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001294s ]
+
+[ 2018-04-21T20:33:41+08:00 ] 127.0.0.1 /mountings/web/index.php/Connecter/Car/get_leveltwo
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000021s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000770s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001809s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002254s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004398s ]
+SQL: SHOW COLUMNS FROM `car_level2` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `car_level2` WHERE `level2_m1id` = '1091'  [ RunTime:0.0011s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002023s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002206s ]
+
+[ 2018-04-21T20:33:43+08:00 ] 127.0.0.1 /mountings/web/index.php/Connecter/Car/get_part
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000025s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001644s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002656s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002066s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004869s ]
+SQL: SHOW COLUMNS FROM `partid` [ RunTime:0.0103s ]
+SQL: SELECT * FROM partid a LEFT JOIN yiparts_items b on a.partid=b.item_partid  WHERE `item_m3id` = '' GROUP BY partid  [ RunTime:0.0763s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001238s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001303s ]
+
+[ 2018-04-21T20:33:45+08:00 ] 127.0.0.1 /mountings/web/index.php/Connecter/Car/get_levelthree
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000022s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000726s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001083s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002497s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003725s ]
+SQL: SHOW COLUMNS FROM `car_level3` [ RunTime:0.0105s ]
+SQL: SELECT * FROM `car_level3` WHERE `level3_m2id` = '2430'  [ RunTime:0.0035s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001707s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001827s ]
+
+[ 2018-04-21T20:33:46+08:00 ] 127.0.0.1 /mountings/web/index.php/Connecter/Car/get_part
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000021s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000760s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001920s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002817s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004914s ]
+SQL: SHOW COLUMNS FROM `partid` [ RunTime:0.0082s ]
+SQL: SELECT * FROM partid a LEFT JOIN yiparts_items b on a.partid=b.item_partid  WHERE `item_m3id` = '60290' GROUP BY partid  [ RunTime:0.0906s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001750s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001876s ]
+

@@ -2963,3 +2963,31 @@ INFO: [ app_end ] --START--
 INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.003327s ]
 INFO: [ app_end ] --END-- [ RunTime:0.003457s ]
 
+[ 2018-04-21T20:29:08+08:00 ] 127.0.0.1 /mountings/web/index.php/Home/Tab/chaxun
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000022s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000850s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002543s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002861s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005723s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000150s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000224s ]
+NOTIC: [8] Undefined variable: nav E:\WWW\mountings\web\Runtime\Cache\Home\e191d19ba3c99187b04ae33538666fe8.php 第 28 行.
+NOTIC: [8] Undefined variable: nav E:\WWW\mountings\web\Runtime\Cache\Home\e191d19ba3c99187b04ae33538666fe8.php 第 29 行.
+NOTIC: [8] Undefined variable: nav E:\WWW\mountings\web\Runtime\Cache\Home\e191d19ba3c99187b04ae33538666fe8.php 第 30 行.
+NOTIC: [8] Undefined variable: nav E:\WWW\mountings\web\Runtime\Cache\Home\e191d19ba3c99187b04ae33538666fe8.php 第 31 行.
+NOTIC: [8] Undefined variable: nav E:\WWW\mountings\web\Runtime\Cache\Home\e191d19ba3c99187b04ae33538666fe8.php 第 32 行.
+NOTIC: [8] Undefined variable: nav E:\WWW\mountings\web\Runtime\Cache\Home\e191d19ba3c99187b04ae33538666fe8.php 第 33 行.
+NOTIC: [8] Undefined variable: nav E:\WWW\mountings\web\Runtime\Cache\Home\e191d19ba3c99187b04ae33538666fe8.php 第 36 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.017579s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.017647s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000848s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000909s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001912s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002030s ]
+

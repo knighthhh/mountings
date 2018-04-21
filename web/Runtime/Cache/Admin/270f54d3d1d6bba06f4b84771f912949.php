@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
 <html lang="zh-cn">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -6,14 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="renderer" content="webkit">
     <title>登录</title>  
-    <link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}pintuer.css">
-    <link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}admin.css">
-    <script src="{$Think.const.ADMIN_JS_URL}jquery.js"></script>
-    <script src="{$Think.const.ADMIN_JS_URL}pintuer.js"></script>  
+    <link rel="stylesheet" href="<?php echo (ADMIN_CSS_URL); ?>pintuer.css">
+    <link rel="stylesheet" href="<?php echo (ADMIN_CSS_URL); ?>admin.css">
+    <script src="<?php echo (ADMIN_JS_URL); ?>jquery.js"></script>
+    <script src="<?php echo (ADMIN_JS_URL); ?>pintuer.js"></script>  
 </head>
 <body>
 <div class="bg">
-	<!--<img style="width: 100%;" src="{$Think.const.ADMIN_IMAGES_URL}homeimg.png"/>-->
+	<!--<img style="width: 100%;" src="<?php echo (ADMIN_IMAGES_URL); ?>homeimg.png"/>-->
 </div>
 <div class="container">
     <div class="line bouncein">
@@ -21,7 +21,7 @@
             <div style="height:150px;"></div>
             <div class="media media-y margin-big-bottom">           
             </div>         
-            <form action="__SELF__" method="post">
+            <form action="/mountings/web/index.php/Admin/Login/login.html" method="post">
             <div class="panel loginbox">
                 <div class="text-center margin-big padding-big-top"><h1>汽配管理中心</h1></div>
                 <div class="panel-body" style="padding:30px; padding-bottom:10px; padding-top:10px;">
