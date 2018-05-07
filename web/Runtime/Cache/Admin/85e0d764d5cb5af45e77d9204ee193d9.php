@@ -31,8 +31,7 @@
   <ul> 
     
     
-   	<?php  echo authCheck(MODULE_NAME.'/Knowdetail/get_email',cookie('id'),'<li><a href="/mountings/web/index.php/Admin/Knowdetail/get_email" target="right"><span class="icon-caret-right"></span>email</a></li>'); ?>
-    <?php  echo authCheck(MODULE_NAME.'/Contact/get_text',cookie('id'),'<li><a href="/mountings/web/index.php/Admin/Contact/get_text" target="right"><span class="icon-caret-right"></span>message</a></li>'); ?>
+   	<?php  echo authCheck(MODULE_NAME.'/Knowdetail/get_email',cookie('id'),'<li><a href="/mountings/web/index.php/Admin/Knowdetail/get_email" target="right"><span class="icon-caret-right"></span>用户信息</a></li>'); ?>
       
   </ul>   
   <h2><span class="fa fa-hospital-o active"></span>数据管理</h2>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	
+	<include file="Public:header"/>
+	<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"></script>
+	<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
+	<div  style="margin-top: 50px;margin-bottom: 0px;">
+		<div  id="about">
+	
+			<div class="container">
+				<div class="row">
+					<div class="col-md-3 hidden-xs hidden-sm ">
+						<div class="list-group hidden-sm">
+							 <a class="list-group-item" href="#1">1.我的信息</a>
+							 <a class="list-group-item" href="#2">2.修改资料</a>
+							 <a class="list-group-item" href="#3">3.已查询零件</a>
+						</div>
+					</div>
+					<div class="col-md-9 about">
+						<a name="1"></a>
+							<h3>我的信息</h3>
+							<p>用户名：<?php echo $res['user_name']; ?>	</p>
+						
+						<a name="2"></a>
+							<h3>修改资料</h3>
+							<p>邮编：516001</p>
+							<p>电话：15712345678</p>
+							<p>邮箱：564370265@qq.com</p>
+							
+						<a name="3"></a>
+							<h3>已查询零件</h3>
+							<p>地址：惠州学院</p>
+							<p>邮编：516001</p>
+							<p>电话：15712345678</p>
+							<p>邮箱：564370265@qq.com</p>
+					</div>
+				</div>
+			</div>
+					
+		</div>
+	</div>
+	
+	<footer id="footer" style="margin-top: 0px;">
+		 <div class="container">
+		 	<p>汽车型号 | 汽配查询 | 汽车保养</p>
+		 	<p>14计科1班-庄御楠-1414080901101</p>
+		 </div>
+	</footer>
+	<script type="text/javascript">
+		$('.about').addClass('active');
+		
+	</script>
+</body>
+</html>
