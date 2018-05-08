@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2018-05-07 23:32:02
+Date: 2018-05-08 23:35:25
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -5216,12 +5216,39 @@ CREATE TABLE `user` (
   `user_name` varchar(255) DEFAULT NULL,
   `user_password` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
 INSERT INTO `user` VALUES ('1', 'hhh', '123456');
+INSERT INTO `user` VALUES ('2', '', '');
+INSERT INTO `user` VALUES ('3', '', '');
+INSERT INTO `user` VALUES ('4', '', '');
+INSERT INTO `user` VALUES ('5', '123465', '79456');
+INSERT INTO `user` VALUES ('6', 'qaz', 'qwe');
+INSERT INTO `user` VALUES ('7', 'qaz', 'qwe');
+INSERT INTO `user` VALUES ('8', 'sadf', 'dsaf');
+INSERT INTO `user` VALUES ('9', 'sadf', 'dasz');
+INSERT INTO `user` VALUES ('10', 'ssss', 'd');
+
+-- ----------------------------
+-- Table structure for `user_part`
+-- ----------------------------
+DROP TABLE IF EXISTS `user_part`;
+CREATE TABLE `user_part` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` varchar(255) DEFAULT NULL,
+  `part_id` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of user_part
+-- ----------------------------
+INSERT INTO `user_part` VALUES ('14', '1', '5508');
+INSERT INTO `user_part` VALUES ('15', '1', '5532');
+INSERT INTO `user_part` VALUES ('16', '10', '5515');
 
 -- ----------------------------
 -- Table structure for `yiparts`
