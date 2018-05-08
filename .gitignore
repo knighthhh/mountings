@@ -1,0 +1,9 @@
+*.pyc
+*.log
+*.logs
+.idea*
+.server*
+.DS_Store
+logs/app.logs.*
+logs/appErr.logs.*
+test
