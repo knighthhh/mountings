@@ -40,26 +40,25 @@
 		
 <body>
 	<div class="" style="margin-top: 50px;">
-		<form action="/mountings/web/index.php/Home/Login/login.html" method="post">
+		<form action="/mountings/web/index.php/Home/Login/reg" method="post">
 		    <div class="panel loginbox" >
-		        <div class="text-center margin-big padding-big-top"><h1>用户登录</h1></div>
+		        <div class="text-center margin-big padding-big-top"><h1>用户注册</h1></div>
 		        <div class="panel-body" style="padding:30px; padding-bottom:10px; padding-top:10px;">
 		            <div class="form-group">
 		                <div class="field field-icon-right text-center" >
-		                    <input type="text" class="input input-big" name="name" placeholder="登录账号" data-validate="required:请填写账号" />
+		                    <input type="text" class="input input-big" name="name" placeholder="注册账号" data-validate="required:请填写账号" />
 		                    <span class="icon icon-user margin-small"></span>
 		                </div>
 		            </div>
 		            <div class="form-group">
 		                <div class="field field-icon-right text-center" >
-		                    <input type="password" class="input input-big" name="password" placeholder="登录密码" data-validate="required:请填写密码" />
+		                    <input type="password" class="input input-big" name="password" placeholder="注册密码" data-validate="required:请填写密码" />
 		                    <span class="icon icon-key margin-small"></span>
 		                </div>
 		            </div>
 		        </div>
 		        <div style="padding:30px;" class="text-center">
-		        	<input type="submit"  class="button button-block bg-main text-big input-big" value="登录">
-		        	<input type="button" id="reg" class="button button-block bg-main text-big input-big" value="注册">
+		        	<input type="submit"  class="button button-block bg-main text-big input-big" value="提交">
 		        </div>
 		    </div>
 		</form>   

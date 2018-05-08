@@ -37,22 +37,20 @@ class LoginController extends Controller
 		redirect(U('Login/login'));
 	}
 
-	public function top(){
-		$this->display();
+	public function reg(){
+		if(IS_POST){
+			$model = D('user');
+			$data['user_name'] = I('post.name');
+			$data['user_password'] = I('post.password');
+			$admin = $model->add($data);
+			redirect(U('Login/login'));
+		}else{
+			$this->display();
+		}
+		
+		
 	}
 
-	public function menu(){
-		$this->display();
-	}
-
-	public function main(){
-		// $model = D('hospital_info');
-		// $sql = "select * from hospital_info";
-		// $data = $model->query($sql);
-		// dump($data);
-		//dump(get_defined_constants());
-		$this->display();
-	}
 
 }
 

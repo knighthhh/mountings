@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
 <html lang="zh-cn">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -6,14 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <meta name="renderer" content="webkit">
 <title></title>
-<link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}pintuer.css">
-<link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}admin.css">
-<link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}jquery-ui.min.css">
-<link rel="stylesheet" href="{$Think.const.ADMIN_LAYUI_URL}css/layui.css">
-<link rel="stylesheet" href="{$Think.const.ADMIN_CSS_URL}font-awesome.min.css">
-<script src="{$Think.const.ADMIN_JS_URL}jquery.js"></script>
-<script src="{$Think.const.ADMIN_JS_URL}jquery-ui.min.js"></script>
-<script src="{$Think.const.ADMIN_JS_URL}pintuer.js"></script>
+<link rel="stylesheet" href="<?php echo (ADMIN_CSS_URL); ?>pintuer.css">
+<link rel="stylesheet" href="<?php echo (ADMIN_CSS_URL); ?>admin.css">
+<link rel="stylesheet" href="<?php echo (ADMIN_CSS_URL); ?>jquery-ui.min.css">
+<link rel="stylesheet" href="<?php echo (ADMIN_LAYUI_URL); ?>css/layui.css">
+<link rel="stylesheet" href="<?php echo (ADMIN_CSS_URL); ?>font-awesome.min.css">
+<script src="<?php echo (ADMIN_JS_URL); ?>jquery.js"></script>
+<script src="<?php echo (ADMIN_JS_URL); ?>jquery-ui.min.js"></script>
+<script src="<?php echo (ADMIN_JS_URL); ?>pintuer.js"></script>
 <style type="text/css">
 	.dialogtable{border-collapse: collapse; width: 100%;padding-top: 12px;}
 	.dialogtable th{background-color: #E8E8E8;}
@@ -26,7 +26,7 @@
 </style>
 </head>
 <body>
-<form method="post" action="__SELF__" id="listform">
+<form method="post" action="/mountings/web/index.php/Admin/User/get_user" id="listform">
   <div class="panel admin-panel">
     <div class="padding border-bottom">
     </div>
@@ -59,13 +59,13 @@
       <tr>
       	<td colspan="8">
       	<div class="pagelist">
-      		{$page}
+      		<?php echo ($page); ?>
       		</div>
       	</td>
       </tr>
     </table>
 </form>
-<script src="{$Think.const.ADMIN_LAYUI_URL}lay/dest/layui.all.js"></script>
+<script src="<?php echo (ADMIN_LAYUI_URL); ?>lay/dest/layui.all.js"></script>
 <script type="text/javascript">
 
 

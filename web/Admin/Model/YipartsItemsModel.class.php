@@ -2,8 +2,8 @@
 namespace Admin\Model;
 use Think\Model;
 
-class UserModel extends Model{
-	public function search($perPage=5)
+class YipartsItemsModel extends Model{
+	public function search($perPage=8)
 	{
 		/* 分页 */
         $count = $this->count();

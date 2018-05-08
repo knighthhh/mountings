@@ -22,20 +22,51 @@
 					<div class="col-md-9 about">
 						<a name="1"></a>
 							<h3>我的信息</h3>
-							<p>用户名：<?php echo $res['user_name']; ?>	</p>
-						
+							<p>用户名：<span id="user_name"><?php echo $res['user_name']; ?></span>	</p>
+							<p>
+								<form action="logout" method="post">
+									<button id="logout" type="submit" value="">退出登录</button>
+								</form>
+								
+							</p>
+							
 						<a name="2"></a>
 							<h3>修改资料</h3>
-							<p>邮编：516001</p>
-							<p>电话：15712345678</p>
-							<p>邮箱：564370265@qq.com</p>
+							<form action="" method="post">
+								<label for="">原始密码</label><input type="password" name="oldpd" id="oldpd" value=""/><br	/>
+								<label for="">新密码  </label><input type="password" name="newpd" id="newpd" value=""/><br/>
+								
+								<input id="submit" type="button" value="提交"/>
+							</form>
+						<br/>
 							
 						<a name="3"></a>
 							<h3>已查询零件</h3>
-							<p>地址：惠州学院</p>
-							<p>邮编：516001</p>
-							<p>电话：15712345678</p>
-							<p>邮箱：564370265@qq.com</p>
+							<?php foreach ($chaxun as $k => $v): ?>
+								<div class="col-md-12" >
+									<div class="row-fluid">
+										<div class="col-md-3">
+											<img alt="140x140" src="<?php echo $v['item_img']; ?>" />
+										</div>
+										<div class="col-md-4">
+											<blockquote>
+												<!--<p></p>-->
+												<small><?php echo $v['item_oe']; ?></small>
+											</blockquote> 
+										</div>
+										<div class="col-md-5">
+											<ul style="list-style: none;">
+												<li ><?php echo $v['item_arg1']; ?></li>
+												<li ><?php echo $v['item_arg2']; ?></li>
+												<li ><?php echo $v['item_arg3']; ?></li>
+												<li ><?php echo $v['item_arg4']; ?></li>
+												<li ><?php echo $v['item_arg5']; ?></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+
+							<?php endforeach; ?>
 					</div>
 				</div>
 			</div>
@@ -50,7 +81,32 @@
 		 </div>
 	</footer>
 	<script type="text/javascript">
+		host_url = 'http://127.0.0.1';
 		$('.about').addClass('active');
+		$('#submit').on('click',function(){
+			user_name = $('#user_name').html();
+			oldpd = $('#oldpd').val();
+			newpd = $('#newpd').val();
+			$.ajax( {
+			    url:host_url + '/mountings/web/index.php/Connecter/User/update_password',
+			    data:{
+			    	user_name:user_name,
+			    	oldpd:oldpd,
+			    	newpd:newpd
+			    },
+			    type:'POST',
+			    dataType:'json',
+			    success:function(data) {
+			    	if(data['result'] == true){
+			    		alert('修改成功');
+			    	}else{
+			    		alert('原密码错误');
+			    	}
+			     },
+			     error : function(XMLHttpRequest, textStatus, errorThrown) {
+			     }
+			});
+		})
 		
 	</script>
 </body>

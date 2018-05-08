@@ -61,7 +61,17 @@ class CarController extends Controller {
 	    $model = M('yiparts_items');
         $data['item_m3id'] = I('post.item_m3id');
         $data['item_partid'] = I('post.item_partid');
-        $res = $model->where($data) -> select();
+//      $data['item_m3id'] ='60290';
+//      $data['item_partid'] = '135';
+        $res = $model->where($data) -> find();
+        //用户查询添加记录
+        
+        if(cookie('user_id')){
+        	$data['part_id'] =   $res['item_id'];
+        	$data['user_id'] = cookie('user_id');
+        	M('user_part') ->add($data);
+        }
+        
     	echo json_encode($res);
 	}
 }

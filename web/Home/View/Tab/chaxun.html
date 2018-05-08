@@ -319,21 +319,26 @@
 			    type:'POST',
 			    dataType:'json',
 			    success:function(data) {
-			    	if(data.length==0){
-			    		var s="";
-			    		$('.yiparts_items').html(s);
-			    	}else{
-			    		var s="";
-						for(var i=0;i<data.length;++i){
-							s +='<div class="col-md-12" ><div class="row-fluid"><div class="col-md-3">';
-							s +='<img alt="140x140" src="'+data[i].item_img+'" /></div><div class="col-md-4">';
-							s +='<blockquote><p>'+$("#part").html()+'</p><small>'+data[i].item_oe+'</small></blockquote></div><div class="col-md-5"><ul style="list-style: none;">';
-							s +='<li >'+data[i].item_arg1+'</li><li>'+data[i].item_arg2+'</li><li>'+data[i].item_arg3+'</li><li>'+data[i].item_arg4+'</li><li>'+data[i].item_arg5+'</li></ul></div></div></div>';
-//							
-								
-						}
-						$('.yiparts_items').html(s);
-			    	}
+//			    	if(data.length==0){
+//			    		var s="";
+//			    		$('.yiparts_items').html(s);
+//			    	}else{
+//			    		var s="";
+//						for(var i=0;i<data.length;++i){
+//							s +='<div class="col-md-12" ><div class="row-fluid"><div class="col-md-3">';
+//							s +='<img alt="140x140" src="'+data[i].item_img+'" /></div><div class="col-md-4">';
+//							s +='<blockquote><p>'+$("#part").html()+'</p><small>'+data[i].item_oe+'</small></blockquote></div><div class="col-md-5"><ul style="list-style: none;">';
+//							s +='<li >'+data[i].item_arg1+'</li><li>'+data[i].item_arg2+'</li><li>'+data[i].item_arg3+'</li><li>'+data[i].item_arg4+'</li><li>'+data[i].item_arg5+'</li></ul></div></div></div>';
+//						}
+//						$('.yiparts_items').html(s);
+//			    	}
+				
+		    		var s="";
+					s +='<div class="col-md-12" ><div class="row-fluid"><div class="col-md-3">';
+					s +='<img alt="140x140" src="'+data.item_img+'" /></div><div class="col-md-4">';
+					s +='<blockquote><p>'+$("#part").html()+'</p><small>'+data.item_oe+'</small></blockquote></div><div class="col-md-5"><ul style="list-style: none;">';
+					s +='<li >'+data.item_arg1+'</li><li>'+data.item_arg2+'</li><li>'+data.item_arg3+'</li><li>'+data.item_arg4+'</li><li>'+data.item_arg5+'</li></ul></div></div></div>';
+					$('.yiparts_items').html(s);
 			       	
 			     },
 			     error : function(XMLHttpRequest, textStatus, errorThrown) {

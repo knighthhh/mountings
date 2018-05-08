@@ -29,12 +29,12 @@
   <div class="leftnav-title" style="font-size: 16px"><strong><span class="fa fa-bars"></span>菜单列表</strong></div>
   <h2><span class="fa fa-user-circle"></span>网站管理</h2>
   <ul> 
-    
-    
-   	<?php  echo authCheck(MODULE_NAME.'/Knowdetail/get_email',cookie('id'),'<li><a href="/mountings/web/index.php/Admin/Knowdetail/get_email" target="right"><span class="icon-caret-right"></span>用户信息</a></li>'); ?>
-      
+   	<?php  echo authCheck(MODULE_NAME.'/User/get_user',cookie('id'),'<li><a href="/mountings/web/index.php/Admin/User/get_user" target="right"><span class="icon-caret-right"></span>用户信息</a></li>'); ?>
   </ul>   
   <h2><span class="fa fa-hospital-o active"></span>数据管理</h2>
+  <ul> 
+   	<?php  echo authCheck(MODULE_NAME.'/Car/get_item',cookie('id'),'<li><a href="/mountings/web/index.php/Admin/Car/get_item" target="right"><span class="icon-caret-right"></span>配件信息</a></li>'); ?>
+  </ul>   
  
 </div>
 <script type="text/javascript">

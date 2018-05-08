@@ -32,10 +32,12 @@
     </div>
     <table class="table table-hover text-center">
       <tr>
-        <th width="25%" style="">ID</th>
-        <th width="25%">name</th>
-        <th width="25%" style="">password</th>
-        <th width="25%"></th>
+        <th width="15%" style="">ID</th>
+        <th width="15%" style="">m3id</th>
+        <th width="15%" style="">partid</th>
+        <th width="15%" style="">img</th>
+        <th width="15%" style="">item_OE</th>
+        <th width="15%" style="">item_arg</th>
       </tr>
       <?php if(empty($data)): ?>
       		<tr>
@@ -49,10 +51,12 @@
       <?php endif; ?>
     <?php foreach ($data as $k => $v): ?>
         <tr>
-          <td><?php echo $v['user_id']; ?></td>
-          <td><?php echo $v['user_name']; ?></td>
-          <td><?php echo $v['user_password']; ?></td>
-          
+          <td><?php echo $v['item_id']; ?></td>
+          <td><?php echo $v['item_m3id']; ?></td>
+          <td><?php echo $v['item_partid']; ?></td>
+          <td> <img src="<?php echo $v['item_img']; ?>"/> </td>
+          <td><?php echo $v['item_oe']; ?></td>
+          <td><?php echo $v['item_arg1']; ?></td>
         </tr>
         
     <?php endforeach; ?>
