@@ -1,4 +1,4 @@
-# 利用爬虫实现汽车配件标准化 (mountings)
+# 利用爬虫对汽车零配件标准化 (mountings)
 ### 目录 
 <ul>
   <li><a href="#system">环境要求</a></li>
