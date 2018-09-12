@@ -43,15 +43,9 @@
 
 > 3）scheduler.py文件中的get_user_info()，get_fans()，get_followers()中的3个函数分别对应获取用户个人信息，获取用户粉丝，获取用户关注者信息。请求的url获得的数据都是json数据格式，用json.loads()十分容易解析，如果字段有改变则进行相应的改变即可。
 
-#
-### <div id="view"/>5. 数据可视化</div>
-> 使用FineBI对用户信息进行数据可视化，我这里随机抽取了10万条数据，FineBI的使用方法可以百度,也可以用其他分析工具。效果如图5-1:
-<p align="center">
-      <img src="https://github.com/knighthhh/outil/blob/master/images/weibo_user_info/weibo_user.png"/><p align="center">5-1 微博用户信息可视化</p>
-</p>
 
 #
-### <div id="other"/>6. 其他</div>
+### <div id="other"/>5. 其他</div>
 > 如果该文对您有所帮助，可以给个星或者打赏一下~ <br/>
 <div>
   <div>
