@@ -5,7 +5,6 @@
   <li><a href="#use">相关配置</a></li>
   <li><a href="#theory">实现原理</a></li>
   <li><a href="#example">使用注意事项</a></li>
-  <li><a href="#view">数据可视化</a></li>
   <li><a href="#other">其他</a></li>
 </ul>
 
